@@ -1,0 +1,28 @@
+{
+  "name": "control-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mateushen/Control-Service.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mateushen/Control-Service/issues"
+  },
+  "homepage": "https://github.com/mateushen/Control-Service#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "hbs": "^4.2.0",
+    "mysql2": "^3.3.2",
+    "nodemon": "^2.0.22",
+    "sequelize": "^6.31.1"
+  }
+}

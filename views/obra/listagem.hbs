@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Serviços</title>
+</head>
+
+<body>
+    <h3>Lista de notícias</h3>
+
+    {{#each noticias}}
+    <div>
+        <h2>{{this.titulo}}</h2>
+        <p>{{this.texto}}</p>
+        <a href={{this.fonte}}>Fonte</a>
+        <form action="/noticias/deletar" method="post">
+            <input type="hidden" name="id" id="id" value={{this.id}}>
+            <button type="submit">Deletar</button>
+        </form>
+        <form action="/noticias/editar" method="post">
+            <input type="hidden" name="id" id="id" value={{this.id}}>
+            <button type="submit">Editar</button>
+        </form>
+    </div>
+    {{/each}}
+
+    <br>
+
+    <a href="/noticias/compor">Cadastrar</a>
+
+</body>
+
+</html>

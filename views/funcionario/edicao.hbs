@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Serviços</title>
+</head>
+
+<body>
+    <h1>Prática Node</h1>
+    <h3>Edição de notícias</h3>
+    <form action="/noticias/salvar_edicao" method="post">
+        <input type="hidden" name="id" id="id" value={{noticia.id}}>
+        <label for="titulo">Título</label><br>
+        <input type="text" name="titulo" id="titulo" value={{noticia.titulo}}><br>
+        <label for="texto">Texto</label><br>
+        <input type="text" name="texto" id="texto" value={{noticia.texto}}><br>
+        <label for="fonte">Fonte</label><br>
+        <input type="text" name="fonte" id="fonte" value={{noticia.fonte}}><br>
+        <button>Salvar</button>
+    </form>
+</body>
+
+</html>
