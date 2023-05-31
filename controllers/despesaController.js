@@ -64,5 +64,4 @@ exports.despesa_salvar_edicao = asyncHandler(async (req, res, next) => {
         console.error('Erro ao editar despesa:', error);
         res.status(500).json({ error: 'Erro ao editar despesa' });
     }
-
 });
