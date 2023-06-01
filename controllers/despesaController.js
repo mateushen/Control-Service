@@ -4,11 +4,11 @@ const asyncHandler = require("express-async-handler");
 
 exports.despesa_lista = asyncHandler(async (req, res, next) => {
     await Despesa.sync();
-    res.render('/despesas/listagem', { despesa: await Despesa.findAll() });
+    res.render('despesa/listagem', { despesa: await Despesa.findAll() });
 });
 
 exports.despesa_cadastrar = asyncHandler(async (req, res, next) => {
-    res.render('/despesas/cadastrar');
+    res.render('despesa/cadastro');
 });
 
 exports.despesa_editando = asyncHandler(async (req, res, next) => {
@@ -16,9 +16,9 @@ exports.despesa_editando = asyncHandler(async (req, res, next) => {
     const despesa = await Despesa.findByPk(req.body.id);
 
     if (despesa) {
-        res.render('/despesas/edicao', { despesa: despesa.dataValues });
+        res.render('despesa/edicao', { despesa: despesa.dataValues });
     } else {
-        res.render('/despesas/listagem');
+        res.render('despesa/listagem');
     }
 });
 
@@ -29,7 +29,7 @@ exports.despesa_inserir = asyncHandler(async (req, res, next) => {
     try {
         if ( descricao && valor && idObra) {
             const despesa = await Despesa.create(req.body);
-            res.redirect('/despesas/listagem');
+            res.redirect('despesa/listagem');
         }
     }catch (error){
         console.error('Erro ao inserir despesa:', error);
@@ -44,7 +44,7 @@ exports.despesa_deletar = asyncHandler(async (req, res, next) => {
     try {
         if (despesa) {
             await despesa.destroy({ where: { id } });
-            res.redirect('/despesas/listagem');
+            res.redirect('despesa/listagem');
         }
     } catch (error) {
         console.error('Erro ao deletar despesa:', error);
@@ -58,7 +58,7 @@ exports.despesa_salvar_edicao = asyncHandler(async (req, res, next) => {
     try {
         if (id && descricao && valor && idObra) {
             await Despesa.update({ descricao, valor, idObra }, { where: { id } })
-            res.redirect('/despesas/listagem');
+            res.redirect('despesa/listagem');
         }
     } catch (error) {
         console.error('Erro ao editar despesa:', error);

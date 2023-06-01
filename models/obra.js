@@ -1,5 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../database/mysql');
+const Despesa = require('./despesa');
 
 const Obra = sequelize.define('Obra', {
   endereco: {

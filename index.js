@@ -3,6 +3,15 @@ const hbs = require('hbs');
 const path = require('path');
 const bp = require('body-parser');
 
+const check = require('./database/checkDatabase');
+
+try{
+    console.log('teste2');
+    check();
+}catch (error){
+    console.log('ERRO Criação do banco');
+}
+
 const despesa = require('./routes/despesa');
 //const funcionario = require('./routes/funcionario');
 const obra = require('./routes/obra');
@@ -15,7 +24,7 @@ app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
 
 app.set('view engine', 'hbs');
-app.set("views", path.join(__dirname, "../views"));
+app.set("views", path.join(__dirname, "./views"));
 
 // app.get('/', (req, res) => {
 //     res.render('login');
