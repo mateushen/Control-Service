@@ -6,30 +6,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Serviços</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h3>Lista de notícias</h3>
+    <h3>Lista de obras</h3>
 
-    {{#each noticias}}
-    <div>
-        <h2>{{this.titulo}}</h2>
-        <p>{{this.texto}}</p>
-        <a href={{this.fonte}}>Fonte</a>
-        <form action="/noticias/deletar" method="post">
-            <input type="hidden" name="id" id="id" value={{this.id}}>
-            <button type="submit">Deletar</button>
-        </form>
-        <form action="/noticias/editar" method="post">
-            <input type="hidden" name="id" id="id" value={{this.id}}>
-            <button type="submit">Editar</button>
-        </form>
+    {{#each obra}}
+    <div class="container">
+        <div>
+            <p>{{this.endereco}}</p>
+            <p>{{this.valorservico}}</p>
+            <p>{{this.descricao}}</p>
+        </div>
+        <div>
+            <form action="/obra/deletar" method="post">
+                <input type="hidden" name="id" id="id" value={{this.id}}>
+                <button type="submit">Deletar</button>
+            </form>
+            <form action="/obra/editar" method="post">
+                <input type="hidden" name="id" id="id" value={{this.id}}>
+                <button type="submit">Editar</button>
+            </form>
+        </div>
+
     </div>
     {{/each}}
 
     <br>
 
-    <a href="/noticias/compor">Cadastrar</a>
+    <a href="/obra/cadastrar">Cadastrar</a>
 
 </body>
 

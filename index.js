@@ -20,6 +20,14 @@ const obra = require('./routes/obra');
 
 const app = express();
 
+app.use(express.static(__dirname + '/public', {
+    setHeaders: (res, path) => {
+      if (path.endsWith('.css')) {
+        res.setHeader('Content-Type', 'text/css');
+      }
+    }
+  }));
+
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
 
