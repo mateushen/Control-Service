@@ -11,16 +11,14 @@ const Despesa = sequelize.define('Despesa', {
   valor: {
     type: DataTypes.DOUBLE,
     allowNull: false
-  },
-  idObra: {
-    type: Sequelize.INTEGER,
-    references: {
-      model: Obra,
-      key: 'id',
-    }
   }
 }, {
   tableName: 'Despesa'
 });
+
+Obra.hasOne(Despesa, {
+  foreignKey: 'idObra'
+});
+//Despesa.belongsTo(Obra);
 
 module.exports = Despesa;

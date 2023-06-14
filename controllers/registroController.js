@@ -29,7 +29,7 @@ exports.registro_inserir = asyncHandler(async (req, res, next) => {
     try {
         if (horas && data && idFuncionario && idObra) {
             const registro = await Registro.create(req.body);
-            res.redirect('/registros/listagem');
+            res.redirect('/listagem');
         }
     } catch (error) {
         console.error('Erro ao inserir registro:', error);

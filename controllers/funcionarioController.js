@@ -29,7 +29,7 @@ exports.funcionario_inserir = asyncHandler(async (req, res, next) => {
     try {
         if (nome && valorhora) {
             const funcionario = await Funcionario.create(req.body);
-            res.redirect('/funcionarios/listagem');
+            res.redirect('/listagem');
         }
     } catch (error) {
         console.error('Erro ao inserir funcionario:', error);
@@ -44,7 +44,7 @@ exports.funcionario_deletar = asyncHandler(async (req, res, next) => {
     try {
         if (funcionario) {
             await Funcionario.destroy({ where: { id } });
-            res.redirect('/funcionarios/listagem');
+            res.redirect('/listagem');
         }
     } catch (error) {
         console.error('Erro ao deletar funcionario:', error);
