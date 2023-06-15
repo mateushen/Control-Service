@@ -5,11 +5,11 @@ const bp = require('body-parser');
 
 const check = require('./database/checkDatabase');
 
-try{
-    console.log('teste2');
-    check();
-}catch (error){
-    console.log('ERRO Criação do banco');
+try {
+  console.log('Banco Criado');
+  check();
+} catch (error) {
+  console.log('ERRO Criação do banco');
 }
 
 const despesa = require('./routes/despesa');
@@ -20,19 +20,14 @@ const obra = require('./routes/obra');
 
 const app = express();
 
-app.use(express.static(__dirname + '/public', {
-    setHeaders: (res, path) => {
-      if (path.endsWith('.css')) {
-        res.setHeader('Content-Type', 'text/css');
-      }
-    }
-  }));
-
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
 
 app.set('view engine', 'hbs');
 app.set("views", path.join(__dirname, "./views"));
+
+const staticPath = path.join(__dirname, 'public');
+app.use(express.static(staticPath));
 
 // app.get('/', (req, res) => {
 //     res.render('login');
@@ -45,5 +40,5 @@ app.use('/obra', obra);
 //app.use('/usuario', usuario);
 
 app.listen(3000, () => {
-    console.log('Server rodando')
+  console.log('Server rodando')
 });

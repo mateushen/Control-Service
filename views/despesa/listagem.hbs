@@ -12,24 +12,29 @@
     <h3>Lista de Despesas</h3>
 
     {{#each despesa}}
-    <div>
-        <h2>{{this.titulo}}</h2>
-        <p>{{this.texto}}</p>
-        <a href={{this.fonte}}>Fonte</a>
-        <form action="/noticias/deletar" method="post">
-            <input type="hidden" name="id" id="id" value={{this.id}}>
-            <button type="submit">Deletar</button>
-        </form>
-        <form action="/noticias/editar" method="post">
-            <input type="hidden" name="id" id="id" value={{this.id}}>
-            <button type="submit">Editar</button>
-        </form>
+    <div class="container">
+        <div>
+            <p>{{this.descricao}}</p>
+            <p>{{this.valor}}</p>
+            <p>{{this.idObra}}</p>
+        </div>
+        <div>
+            <form action="/despesa/deletar" method="post">
+                <input type="hidden" name="id" id="id" value={{this.id}}>
+                <button type="submit">Deletar</button>
+            </form>
+            <form action="/despesa/editar" method="post">
+                <input type="hidden" name="id" id="id" value={{this.id}}>
+                <button type="submit">Editar</button>
+            </form>
+        </div>
+
     </div>
     {{/each}}
 
     <br>
 
-    <a href="/noticias/compor">Cadastrar</a>
+    <a href="/despesa/cadastrar">Cadastrar</a>
 
 </body>
 

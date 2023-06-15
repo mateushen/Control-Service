@@ -25,12 +25,12 @@ exports.despesa_editando = asyncHandler(async (req, res, next) => {
 exports.despesa_inserir = asyncHandler(async (req, res, next) => {
     await Despesa.sync();
     const { descricao, valor, idObra } = req.body;
+    console.log(req.body)
 
     try {
-        if ( descricao && valor && idObra) {
             const despesa = await Despesa.create(req.body);
-            res.redirect('despesa/listagem');
-        }
+            res.redirect('/despesa/listagem');
+
     }catch (error){
         console.error('Erro ao inserir despesa:', error);
         res.status(500).json({ error: 'Erro ao inserir despesa' });

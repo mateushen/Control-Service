@@ -12,14 +12,14 @@
 
     <h3>Edição de obras</h3>
 
-    <form action="/obras/salvar_edicao" method="post">
+    <form action="/obra/salvar_edicao" method="post">
         <input type="hidden" name="id" id="id" value={{obra.id}}>
         <label for="endereco">Endereço</label><br>
         <input type="text" name="endereco" id="endereco" value={{obra.endereco}}><br>
         <label for="valorservico">Valor do serviço</label><br>
         <input type="text" name="valorservico" id="valorservico" value={{obra.valorservico}}><br>
         <label for="descricao">Descrição</label><br>
-        <input type="text" name="descricao" id="descricao" valor={{obra.descricao}}><br>
+        <input type="text" name="descricao" id="descricao" value={{obra.descricao}}><br>
         <button>Cadastrar</button>
     </form>
 </body>

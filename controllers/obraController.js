@@ -14,6 +14,7 @@ exports.obra_cadastrar = asyncHandler(async (req, res, next) => {
 exports.obra_editando = asyncHandler(async (req, res, next) => {
     await Obra.sync();
     const obra = await Obra.findByPk(req.body.id);
+    console.log(obra);
 
     if (obra) {
         res.render('obra/edicao', { obra: obra.dataValues });
