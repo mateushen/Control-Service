@@ -9,16 +9,16 @@
 </head>
 
 <body>
-    <h3>Edição de notícias</h3>
+    <h3>Edição de Registros de Funcionários</h3>
     
     <form action="/noticias/salvar_edicao" method="post">
         <input type="hidden" name="id" id="id" value={{noticia.id}}>
-        <label for="titulo">Título</label><br>
-        <input type="text" name="titulo" id="titulo" value={{noticia.titulo}}><br>
-        <label for="texto">Texto</label><br>
-        <input type="text" name="texto" id="texto" value={{noticia.texto}}><br>
-        <label for="fonte">Fonte</label><br>
-        <input type="text" name="fonte" id="fonte" value={{noticia.fonte}}><br>
+        <input type="hidden" name="idObra" id="idObra" value={{noticia.idObra}}>
+        <input type="hidden" name="idFuncionario" id="idFuncionario" value={{noticia.idFuncionario}}>
+        <label for="qtd_horas">Horas Trabalhadas</label><br>
+        <input type="text" name="qtd_horas" id="qtd_horas" value={{noticia.qtd_horas}}><br>
+        <label for="data">Data</label><br>
+        <input type="text" name="data" id="data" value={{noticia.data}}><br>
         <button>Salvar</button>
     </form>
 </body>

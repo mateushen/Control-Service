@@ -5,30 +5,25 @@ const Funcionario = require('./funcionario');
 const Obra = require('./obra');
 
 const Registro = sequelize.define('Registro', {
-  horas: {
+  qtd_horas: {
     type: DataTypes.INTEGER,
     allowNull: false
   },
   data: {
     type: DataTypes.DOUBLE,
     allowNull: false
-  },
-  idFuncionario: {
-    type: Sequelize.INTEGER,
-    references: {
-      model: Funcionario,
-      key: 'id',
-    }
-  },
-  idObra: {
-    type: Sequelize.INTEGER,
-    references: {
-      model: Obra,
-      key: 'id',
-    }
   }
 }, {
   tableName: 'Registro'
 });
+
+Obra.hasOne(Registro, {
+  foreignKey: 'idObra'
+});
+
+Funcionario.hasOne(Registro, {
+  foreignKey: 'idFuncionario'
+});
+
 
 module.exports = Registro;

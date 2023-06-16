@@ -14,7 +14,6 @@ exports.obra_cadastrar = asyncHandler(async (req, res, next) => {
 exports.obra_editando = asyncHandler(async (req, res, next) => {
     await Obra.sync();
     const obra = await Obra.findByPk(req.body.id);
-    console.log(obra);
 
     if (obra) {
         res.render('obra/edicao', { obra: obra.dataValues });
@@ -30,7 +29,7 @@ exports.obra_inserir = asyncHandler(async (req, res, next) => {
     try {
         if ( endereco && valorservico && descricao) {
             const obra = await Obra.create(req.body);
-            res.redirect('obra/listagem');
+            res.redirect('/obra/listagem');
         }
     }catch (error){
         console.error('Erro ao inserir obra:', error);
@@ -45,7 +44,7 @@ exports.obra_deletar = asyncHandler(async (req, res, next) => {
     try {
         if (obra) {
             await obra.destroy({ where: { id } });
-            res.redirect('obra/listagem');
+            res.redirect('/obra/listagem');
         }
     } catch (error) {
         console.error('Erro ao deletar obra:', error);
@@ -59,7 +58,7 @@ exports.obra_salvar_edicao = asyncHandler(async (req, res, next) => {
     try {
         if (id && endereco && valorservico) {
             await Obra.update({ endereco, valorservico, descricao }, { where: { id } })
-            res.redirect('obra/listagem');
+            res.redirect('/obra/listagem');
         }
     } catch (error) {
         console.error('Erro ao editar obra:', error);

@@ -13,9 +13,9 @@ try {
 }
 
 const despesa = require('./routes/despesa');
-//const funcionario = require('./routes/funcionario');
+const funcionario = require('./routes/funcionario');
 const obra = require('./routes/obra');
-//const registro = require('./routes/registro');
+const registro = require('./routes/registro');
 //const usuario = require('./routes/usuario');
 
 const app = express();
@@ -34,9 +34,9 @@ app.use(express.static(staticPath));
 // });
 
 app.use('/despesa', despesa);
-//app.use('/funcionario', funcionario);
+app.use('/funcionario', funcionario);
 app.use('/obra', obra);
-//app.use('/registro', registro);
+app.use('/registro', registro);
 //app.use('/usuario', usuario);
 
 app.listen(3000, () => {

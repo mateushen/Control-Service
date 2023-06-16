@@ -9,27 +9,31 @@
 </head>
 
 <body>
-    <h3>Lista de notícias</h3>
+    <h3>Lista de Registros</h3>
 
-    {{#each noticias}}
-    <div>
-        <h2>{{this.titulo}}</h2>
-        <p>{{this.texto}}</p>
-        <a href={{this.fonte}}>Fonte</a>
-        <form action="/noticias/deletar" method="post">
-            <input type="hidden" name="id" id="id" value={{this.id}}>
-            <button type="submit">Deletar</button>
-        </form>
-        <form action="/noticias/editar" method="post">
-            <input type="hidden" name="id" id="id" value={{this.id}}>
-            <button type="submit">Editar</button>
-        </form>
+    {{#each registro}}
+    <div class="container">
+        <div>
+            <p>{{this.qtd_horas}}</p>
+            <p>{{this.data}}</p>
+        </div>
+        <div>
+            <form action="/registro/deletar" method="post">
+                <input type="hidden" name="id" id="id" value={{this.id}}>
+                <button type="submit">Deletar</button>
+            </form>
+            <form action="/registro/edicao" method="post">
+                <input type="hidden" name="id" id="id" value={{this.id}}>
+                <button type="submit">Editar</button>
+            </form>
+        </div>
+
     </div>
     {{/each}}
 
     <br>
 
-    <a href="/noticias/compor">Cadastrar</a>
+    <a href="/registro/cadastrar">Cadastrar</a>
 
 </body>
 

@@ -9,14 +9,19 @@
 </head>
 
 <body>
-    <h3>Cadastro de Registros</h3>
+    <h3>Cadastro de Registros de Funcionários</h3>
 
-    <form action="" method="post">
-        <label for="horas">Quantidade de horas</label><br>
-        <input type="text" name="horas" id="horas"><br>
+    <form action="/registro/inserir" method="post">
+        <label for="qtd_horas">Quantidade de horas</label><br>
+        <input type="text" name="qtd_horas" id="qtd_horas"><br>
         <label for="texto">Data</label><br>
         <input type="text" name="data" id="data"><br>
 
+        <label for="idObra">idObra</label><br>
+        <input type="text" name="idObra" id="idObra"><br>
+
+        <label for="idFuncionario">idFuncionario</label><br>
+        <input type="text" name="idFuncionario" id="idFuncionario"><br>
         <button>Cadastrar</button>
     </form>
 </body>

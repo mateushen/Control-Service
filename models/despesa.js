@@ -19,6 +19,5 @@ const Despesa = sequelize.define('Despesa', {
 Obra.hasOne(Despesa, {
   foreignKey: 'idObra'
 });
-//Despesa.belongsTo(Obra);
 
 module.exports = Despesa;

@@ -4,11 +4,11 @@ const asyncHandler = require("express-async-handler");
 
 exports.funcionario_lista = asyncHandler(async (req, res, next) => {
     await Funcionario.sync();
-    res.render('/funcionarios/listagem', { funcionario: await Funcionario.findAll() });
+    res.render('funcionario/listagem', { funcionario: await Funcionario.findAll() });
 });
 
 exports.funcionario_cadastrar = asyncHandler(async (req, res, next) => {
-    res.render('/funcionarios/cadastrar');
+    res.render('funcionario/cadastro');
 });
 
 exports.funcionario_editando = asyncHandler(async (req, res, next) => {
@@ -16,9 +16,9 @@ exports.funcionario_editando = asyncHandler(async (req, res, next) => {
     const funcionario = await Funcionario.findByPk(req.body.id);
 
     if (funcionario) {
-        res.render('/funcionarios/edicao', { funcionario: funcionario.dataValues });
+        res.render('funcionario/edicao', { funcionario: funcionario.dataValues });
     } else {
-        res.render('/funcionarios/listagem');
+        res.render('funcionario/listagem');
     }
 });
 
@@ -29,7 +29,7 @@ exports.funcionario_inserir = asyncHandler(async (req, res, next) => {
     try {
         if (nome && valorhora) {
             const funcionario = await Funcionario.create(req.body);
-            res.redirect('/listagem');
+            res.redirect('/funcionario/listagem');
         }
     } catch (error) {
         console.error('Erro ao inserir funcionario:', error);
@@ -44,7 +44,7 @@ exports.funcionario_deletar = asyncHandler(async (req, res, next) => {
     try {
         if (funcionario) {
             await Funcionario.destroy({ where: { id } });
-            res.redirect('/listagem');
+            res.redirect('/funcionario/listagem');
         }
     } catch (error) {
         console.error('Erro ao deletar funcionario:', error);
@@ -58,7 +58,7 @@ exports.funcionario_salvar_edicao = asyncHandler(async (req, res, next) => {
     try {
         if (id && nome && valorhora) {
             await Funcionario.update({ nome, valorhora }, { where: { id } })
-            res.redirect('/funcionarios/listagem');
+            res.redirect('/funcionario/listagem');
         }
     } catch (error) {
         console.error('Erro ao editar funcionario:', error);
