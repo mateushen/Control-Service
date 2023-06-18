@@ -15,13 +15,19 @@
     <form action="/despesa/inserir" method="post">
         <label for="descricao">Descrição</label><br>
         <input type="text" name="descricao" id="descricao"><br>
-        <label for="valor">Valor</label><br>
-        <input type="text" name="valor" id="valor"><br>
-        <label for="idObra">idObra</label><br>
-        <input type="text" name="idObra" id="idObra"><br>
+        <label for="valordespesa">Valor</label><br>
+        <input type="text" name="valordespesa" id="valordespesa"><br>
+
+        <select name="idObra" id="idObra">
+            <option value="0" selected hidden>- Selecione a obra -</option>
+            {{#each obra}}
+            <option value={{this.id}}>{{this.endereco}}</option>
+            {{/each}}
+        </select>
 
         <button>Cadastrar</button>
     </form>
+
 </body>
 
 </html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Serviços</title>
+</head>
+
+<body>
+    <h3>Cadastro de Pagamento de Funcionários</h3>
+
+    <form action="/pagamento/inserir" method="post">
+        <label for="qtd_horas">Quantidade de horas</label><br>
+        <input type="text" name="qtd_horas" id="qtd_horas"><br>
+        <label for="texto">Data</label><br>
+        <input type="text" name="data" id="data"><br>
+
+        <select name="idFuncionario" id="idFuncionario">
+            <option value="0" selected hidden>- Selecione o funcionario -</option>
+            {{#each funcionario}}
+            <option value={{this.id}}>{{this.nome}}</option>
+            {{/each}}
+        </select>
+
+        <select name="idObra" id="idObra">
+            <option value="0" selected hidden>- Selecione a obra -</option>
+            {{#each obra}}
+            <option value={{this.id}}>{{this.endereco}}</option>
+            {{/each}}
+        </select>
+
+        <button>Cadastrar</button>
+    </form>
+</body>
+
+</html>

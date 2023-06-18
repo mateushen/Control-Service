@@ -1,6 +1,24 @@
 const { text } = require("body-parser");
+const { Sequelize } = require('sequelize');
+const sequelize = require('../database/mysql');
 const Obra = require("../models/obra");
+const Despesa = require("../models/despesa");
 const asyncHandler = require("express-async-handler");
+
+exports.obra_despesas = asyncHandler(async (req, res, next) => {
+    await Obra.sync();
+    await Despesa.sync();
+
+    sequelize.query('SELECT * FROM obra INNER JOIN despesa ON obra.id = despesa.idObra', {
+        type: Sequelize.QueryTypes.SELECT,
+    }).then((obra) => {
+        res.render('obra/despesas', { obra: obra });
+        console.log(obra);
+    }).catch((error) => {
+        console.error(error);
+    });
+});
+
 
 exports.obra_lista = asyncHandler(async (req, res, next) => {
     await Obra.sync();
@@ -27,11 +45,11 @@ exports.obra_inserir = asyncHandler(async (req, res, next) => {
     const { endereco, valorservico, descricao } = req.body;
 
     try {
-        if ( endereco && valorservico && descricao) {
+        if (endereco && valorservico && descricao) {
             const obra = await Obra.create(req.body);
             res.redirect('/obra/listagem');
         }
-    }catch (error){
+    } catch (error) {
         console.error('Erro ao inserir obra:', error);
         res.status(500).json({ error: 'Erro ao inserir obra' });
     }

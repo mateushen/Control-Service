@@ -9,22 +9,20 @@
 </head>
 
 <body>
-    <h3>Lista de Registros</h3>
+    <h3>Lista de Pagamentos</h3>
 
-    {{#each registro}}
+    {{#each pagamento}}
     <div class="container">
         <div>
+            <p>{{this.nome}}</p>
+            <p>{{this.endereco}}</p>
             <p>{{this.qtd_horas}}</p>
             <p>{{this.data}}</p>
         </div>
         <div>
-            <form action="/registro/deletar" method="post">
+            <form action="/pagamento/deletar" method="post">
                 <input type="hidden" name="id" id="id" value={{this.id}}>
                 <button type="submit">Deletar</button>
-            </form>
-            <form action="/registro/edicao" method="post">
-                <input type="hidden" name="id" id="id" value={{this.id}}>
-                <button type="submit">Editar</button>
             </form>
         </div>
 
@@ -33,7 +31,7 @@
 
     <br>
 
-    <a href="/registro/cadastrar">Cadastrar</a>
+    <a href="/pagamento/cadastrar">Cadastrar</a>
 
 </body>
 

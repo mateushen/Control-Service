@@ -30,10 +30,12 @@ exports.funcionario_inserir = asyncHandler(async (req, res, next) => {
         if (nome && valorhora) {
             const funcionario = await Funcionario.create(req.body);
             res.redirect('/funcionario/listagem');
+        } else {
+            console.log('Erro ao inserir funcionário');
         }
     } catch (error) {
-        console.error('Erro ao inserir funcionario:', error);
-        res.status(500).json({ error: 'Erro ao inserir funcionario' });
+        console.error('Erro ao inserir funcionário:', error);
+        res.status(500).json({ error: 'Erro ao inserir funcionário' });
     }
 });
 
@@ -45,6 +47,8 @@ exports.funcionario_deletar = asyncHandler(async (req, res, next) => {
         if (funcionario) {
             await Funcionario.destroy({ where: { id } });
             res.redirect('/funcionario/listagem');
+        } else {
+            console.log('Erro ao deletar funcionario');
         }
     } catch (error) {
         console.error('Erro ao deletar funcionario:', error);
@@ -59,6 +63,8 @@ exports.funcionario_salvar_edicao = asyncHandler(async (req, res, next) => {
         if (id && nome && valorhora) {
             await Funcionario.update({ nome, valorhora }, { where: { id } })
             res.redirect('/funcionario/listagem');
+        } else {
+            console.log('Erro ao editar funcionario');
         }
     } catch (error) {
         console.error('Erro ao editar funcionario:', error);

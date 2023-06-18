@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const sequelize = require('../database/mysql');
 
 const Obra = require('./obra');
@@ -8,7 +8,7 @@ const Despesa = sequelize.define('Despesa', {
     type: DataTypes.STRING,
     allowNull: false
   },
-  valor: {
+  valordespesa: {
     type: DataTypes.DOUBLE,
     allowNull: false
   }
@@ -17,7 +17,8 @@ const Despesa = sequelize.define('Despesa', {
 });
 
 Obra.hasOne(Despesa, {
-  foreignKey: 'idObra'
+  foreignKey: 'idObra',
+  allowNull: false
 });
 
 module.exports = Despesa;
