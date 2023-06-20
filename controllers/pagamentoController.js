@@ -15,7 +15,6 @@ exports.pagamento_lista = asyncHandler(async (req, res, next) => {
         type: Sequelize.QueryTypes.SELECT,
     }).then((pagamento) => {
         res.render('pagamento/listagem', { pagamento: pagamento });
-        console.log(pagamento);
     }).catch((error) => {
         console.error(error);
     });
