@@ -24,9 +24,10 @@ exports.funcionario_editando = asyncHandler(async (req, res, next) => {
 
 exports.funcionario_inserir = asyncHandler(async (req, res, next) => {
     await Funcionario.sync();
-    const { nome, valorhora } = req.body;
-
+    
     try {
+        const { nome, valorhora } = req.body;
+
         if (nome && valorhora) {
             const funcionario = await Funcionario.create(req.body);
             res.redirect('/funcionario/listagem');
@@ -40,10 +41,9 @@ exports.funcionario_inserir = asyncHandler(async (req, res, next) => {
 });
 
 exports.funcionario_deletar = asyncHandler(async (req, res, next) => {
-    const { id } = req.body;
-    const funcionario = await Funcionario.findByPk(id);
-
     try {
+        const { id } = req.body;
+        const funcionario = await Funcionario.findByPk(id);
         if (funcionario) {
             await Funcionario.destroy({ where: { id } });
             res.redirect('/funcionario/listagem');
@@ -57,9 +57,8 @@ exports.funcionario_deletar = asyncHandler(async (req, res, next) => {
 });
 
 exports.funcionario_salvar_edicao = asyncHandler(async (req, res, next) => {
-    const { id, nome, valorhora } = req.body;
-
     try {
+        const { id, nome, valorhora } = req.body;
         if (id && nome && valorhora) {
             await Funcionario.update({ nome, valorhora }, { where: { id } })
             res.redirect('/funcionario/listagem');

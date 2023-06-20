@@ -15,14 +15,13 @@ exports.despesa_cadastrar = asyncHandler(async (req, res, next) => {
 
 exports.despesa_inserir = asyncHandler(async (req, res, next) => {
     await Despesa.sync();
-    const { descricao, valordespesa, idObra } = req.body;
-    console.log(req.body);
 
     try {
+        const { descricao, valordespesa, idObra } = req.body;
         if (descricao && valordespesa && idObra) {
             const despesa = await Despesa.create(req.body);
             res.redirect('/despesa/listagem');
-        }else{
+        } else {
             console.log('Erro ao inserir despesa');
         }
     } catch (error) {
@@ -33,14 +32,13 @@ exports.despesa_inserir = asyncHandler(async (req, res, next) => {
 
 exports.despesa_funcionario = asyncHandler(async (req, res, next) => {
     await Despesa.sync();
-    const { descricao, valordespesa, idObra } = req.body;
-    console.log(req.body);
 
     try {
+        const { descricao, valordespesa, idObra } = req.body;
         if (descricao && valordespesa && idObra) {
             const despesa = await Despesa.create(req.body);
             res.redirect('/despesa/listagem');
-        }else{
+        } else {
             console.log('Erro ao inserir despesa');
         }
     } catch (error) {
@@ -50,14 +48,13 @@ exports.despesa_funcionario = asyncHandler(async (req, res, next) => {
 });
 
 exports.despesa_deletar = asyncHandler(async (req, res, next) => {
-    const { id } = req.body;
-    const despesa = await Despesa.findByPk(id);
-
     try {
+        const { id } = req.body;
+        const despesa = await Despesa.findByPk(id);
         if (despesa) {
             await despesa.destroy({ where: { id } });
             res.redirect('/despesa/listagem');
-        }else{
+        } else {
             console.log('Erro ao deletar despesa');
         }
     } catch (error) {

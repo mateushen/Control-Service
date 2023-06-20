@@ -40,9 +40,9 @@ exports.pagamento_editando = asyncHandler(async (req, res, next) => {
 
 exports.pagamento_inserir = asyncHandler(async (req, res, next) => {
     await Pagamento.sync();
-    const { qtd_horas, data, idFuncionario, idObra } = req.body;
-
     try {
+        
+        const { qtd_horas, data, idFuncionario, idObra } = req.body;
         if (qtd_horas && data && idFuncionario && idObra) {
             const pagamento = await Pagamento.create(req.body);
             res.redirect('/pagamento/listagem');
@@ -54,10 +54,9 @@ exports.pagamento_inserir = asyncHandler(async (req, res, next) => {
 });
 
 exports.pagamento_deletar = asyncHandler(async (req, res, next) => {
-    const { id } = req.body;
-    const pagamento = await Pagamento.findByPk(id);
-
     try {
+        const { id } = req.body;
+        const pagamento = await Pagamento.findByPk(id);
         if (pagamento) {
             await Pagamento.destroy({ where: { id } });
             res.redirect('/pagamento/listagem');
@@ -69,9 +68,8 @@ exports.pagamento_deletar = asyncHandler(async (req, res, next) => {
 });
 
 exports.pagamento_salvar_edicao = asyncHandler(async (req, res, next) => {
-    const { id, horas, data, idFuncionario, idObra } = req.body;
-
     try {
+        const { id, horas, data, idFuncionario, idObra } = req.body;
         if (id && horas && data && idFuncionario && idObra) {
             await Registro.update({ descricao, valor, idObra }, { where: { id } })
             res.redirect('/pagamento/listagem');

@@ -42,9 +42,9 @@ exports.obra_editando = asyncHandler(async (req, res, next) => {
 
 exports.obra_inserir = asyncHandler(async (req, res, next) => {
     await Obra.sync();
-    const { endereco, valorservico, descricao } = req.body;
 
     try {
+        const { endereco, valorservico, descricao } = req.body;
         if (endereco && valorservico && descricao) {
             const obra = await Obra.create(req.body);
             res.redirect('/obra/listagem');
@@ -56,10 +56,9 @@ exports.obra_inserir = asyncHandler(async (req, res, next) => {
 });
 
 exports.obra_deletar = asyncHandler(async (req, res, next) => {
-    const { id } = req.body;
-    const obra = await Obra.findByPk(id);
-
     try {
+        const { id } = req.body;
+        const obra = await Obra.findByPk(id);
         if (obra) {
             await obra.destroy({ where: { id } });
             res.redirect('/obra/listagem');
@@ -71,9 +70,8 @@ exports.obra_deletar = asyncHandler(async (req, res, next) => {
 });
 
 exports.obra_salvar_edicao = asyncHandler(async (req, res, next) => {
-    const { id, endereco, valorservico, descricao } = req.body;
-
     try {
+        const { id, endereco, valorservico, descricao } = req.body;
         if (id && endereco && valorservico) {
             await Obra.update({ endereco, valorservico, descricao }, { where: { id } })
             res.redirect('/obra/listagem');
