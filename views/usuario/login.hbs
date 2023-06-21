@@ -11,11 +11,13 @@
 <body>
 
     <h3>Login</h3>
-    <form action="/usuario/verifica" method="post">
+    <form action="/usuario/verifica" method="post" onsubmit="return camposUsuario()">
         <label for="nome">Nome</label><br>
         <input type="text" name="nome" id="nome"><br>
         <label for="senha">Senha</label><br>
         <input type="text" name="senha" id="senha"><br>
+
+        <script src="/public/functions/validaCampos.js"></script>
         <button>LOGIN</button>
     </form>
 </body>
