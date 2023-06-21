@@ -7,10 +7,9 @@ const checkDatabase = require('./database/checkDatabase');
 const checkUsuario = require('./public/functions/checkUser');
 
 try {
-  console.log('Banco Criado');
   checkDatabase();
 } catch (error) {
-  console.log('ERRO Criação do banco');
+  console.error('Erro na criação do banco: ', error);
 }
 
 const despesa = require('./routes/despesa');
