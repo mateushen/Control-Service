@@ -37,7 +37,6 @@ app.use('/usuario', usuario);
 
 app.get('/', (req, res) => {
   checkUsuario().then((response) => {
-    console.log(response);
     if (response) {
       res.render('usuario/login');
     } else {
