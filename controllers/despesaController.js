@@ -26,7 +26,6 @@ exports.despesa_inserir = asyncHandler(async (req, res, next) => {
         }
     } catch (error) {
         console.error('Erro ao inserir despesa:', error);
-        res.status(500).json({ error: 'Erro ao inserir despesa' });
     }
 });
 
@@ -43,7 +42,6 @@ exports.despesa_funcionario = asyncHandler(async (req, res, next) => {
         }
     } catch (error) {
         console.error('Erro ao inserir despesa:', error);
-        res.status(500).json({ error: 'Erro ao inserir despesa' });
     }
 });
 
@@ -59,6 +57,5 @@ exports.despesa_deletar = asyncHandler(async (req, res, next) => {
         }
     } catch (error) {
         console.error('Erro ao deletar despesa:', error);
-        res.status(500).json({ error: 'Erro ao deletar despesa' });
     }
 });

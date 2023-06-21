@@ -13,7 +13,6 @@ exports.obra_despesas = asyncHandler(async (req, res, next) => {
         type: Sequelize.QueryTypes.SELECT,
     }).then((obra) => {
         res.render('obra/despesas', { obra: obra });
-        console.log(obra);
     }).catch((error) => {
         console.error(error);
     });
@@ -51,7 +50,6 @@ exports.obra_inserir = asyncHandler(async (req, res, next) => {
         }
     } catch (error) {
         console.error('Erro ao inserir obra:', error);
-        res.status(500).json({ error: 'Erro ao inserir obra' });
     }
 });
 
@@ -65,7 +63,6 @@ exports.obra_deletar = asyncHandler(async (req, res, next) => {
         }
     } catch (error) {
         console.error('Erro ao deletar obra:', error);
-        res.status(500).json({ error: 'Erro ao deletar obra' });
     }
 });
 
@@ -78,6 +75,5 @@ exports.obra_salvar_edicao = asyncHandler(async (req, res, next) => {
         }
     } catch (error) {
         console.error('Erro ao editar obra:', error);
-        res.status(500).json({ error: 'Erro ao editar obra' });
     }
 });

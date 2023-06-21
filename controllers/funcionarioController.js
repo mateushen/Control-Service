@@ -36,7 +36,6 @@ exports.funcionario_inserir = asyncHandler(async (req, res, next) => {
         }
     } catch (error) {
         console.error('Erro ao inserir funcionário:', error);
-        res.status(500).json({ error: 'Erro ao inserir funcionário' });
     }
 });
 
@@ -52,7 +51,6 @@ exports.funcionario_deletar = asyncHandler(async (req, res, next) => {
         }
     } catch (error) {
         console.error('Erro ao deletar funcionario:', error);
-        res.status(500).json({ error: 'Erro ao deletar funcionario' });
     }
 });
 
@@ -67,6 +65,5 @@ exports.funcionario_salvar_edicao = asyncHandler(async (req, res, next) => {
         }
     } catch (error) {
         console.error('Erro ao editar funcionario:', error);
-        res.status(500).json({ error: 'Erro ao editar funcionario' });
     }
 });

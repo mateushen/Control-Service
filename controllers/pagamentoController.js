@@ -48,7 +48,6 @@ exports.pagamento_inserir = asyncHandler(async (req, res, next) => {
         }
     } catch (error) {
         console.error('Erro ao inserir pagamento:', error);
-        res.status(500).json({ error: 'Erro ao inserir pagamento' });
     }
 });
 
@@ -62,7 +61,6 @@ exports.pagamento_deletar = asyncHandler(async (req, res, next) => {
         }
     } catch (error) {
         console.error('Erro ao deletar pagamento:', error);
-        res.status(500).json({ error: 'Erro ao deletar pagamento' });
     }
 });
 
@@ -75,6 +73,5 @@ exports.pagamento_salvar_edicao = asyncHandler(async (req, res, next) => {
         }
     } catch (error) {
         console.error('Erro ao editar registro:', error);
-        res.status(500).json({ error: 'Erro ao editar registro' });
     }
 });
