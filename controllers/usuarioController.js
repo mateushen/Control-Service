@@ -49,7 +49,9 @@ exports.usuario_verifica = asyncHandler(async (req, res, next) => {
 
             if (valida && usuario.dataValues.nome) {
                 console.log('Usuário encontrado');
-                res.redirect('/usuario/inicio'), usuario.dataValues.nome;
+                res.redirect('/usuario/inicio');
+                req.session.logado = true;
+                req.session.nome = usuario.dataValues.nome;
             } else {
                 console.log('Usuário não encontrado');
                 res.redirect('/');
