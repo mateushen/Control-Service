@@ -4,6 +4,14 @@ const funcionario_controller = require('../controllers/funcionarioController');
 
 const route = express.Router();
 
+route.use(function timeLog(req, res, next) {
+    if (req.session.logado) {
+      next();
+    } else {
+      res.redirect('/usuario/login');
+    }
+  });
+
 route.get('/listagem', funcionario_controller.funcionario_lista);
 route.get('/cadastrar', funcionario_controller.funcionario_cadastrar);
 route.post('/inserir', funcionario_controller.funcionario_inserir);

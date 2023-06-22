@@ -49,9 +49,9 @@ exports.usuario_verifica = asyncHandler(async (req, res, next) => {
 
             if (valida && usuario.dataValues.nome) {
                 console.log('Usuário encontrado');
-                res.redirect('/usuario/inicio');
                 req.session.logado = true;
                 req.session.nome = usuario.dataValues.nome;
+                res.redirect('/usuario/inicio');
             } else {
                 console.log('Usuário não encontrado');
                 res.redirect('/');
@@ -66,3 +66,9 @@ exports.usuario_verifica = asyncHandler(async (req, res, next) => {
         res.redirect('/');
     }
 });
+
+exports.usuario_sair = asyncHandler(async (req, res, next) => {
+    req.session.destroy((err) => { });
+    res.redirect('/');
+  });
+  

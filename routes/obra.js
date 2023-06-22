@@ -4,6 +4,14 @@ const obra_controller = require('../controllers/obraController');
 
 const route = express.Router();
 
+route.use(function timeLog(req, res, next) {
+    if (req.session.logado) {
+      next();
+    } else {
+      res.redirect('/usuario/login');
+    }
+  });
+
 route.get('/listagem', obra_controller.obra_lista);
 route.get('/cadastrar', obra_controller.obra_cadastrar);
 route.post('/inserir', obra_controller.obra_inserir);

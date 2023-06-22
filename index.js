@@ -3,19 +3,12 @@ const hbs = require('hbs');
 const path = require('path');
 const bp = require('body-parser');
 const session = require('express-session');
-const checkDatabase = require('./database/checkDatabase');
 const checkUsuario = require('./public/functions/checkUser');
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 const dbconnection = require('./database/mysql');
 
 const app = express();
-
-try {
-  checkDatabase();
-} catch (error) {
-  console.error('Erro na criação do banco: ', error);
-}
 
 const despesa = require('./routes/despesa');
 const funcionario = require('./routes/funcionario');
