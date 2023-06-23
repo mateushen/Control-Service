@@ -1,6 +1,6 @@
 const express = require('express');
 
-const despesa_controller = require('../controllers/despesaController');
+const controller = require('../controllers/despesaController');
 
 const route = express.Router();
 
@@ -12,9 +12,9 @@ route.use(function timeLog(req, res, next) {
   }
 });
 
-route.get('/listagem', despesa_controller.despesa_lista);
-route.get('/cadastrar', despesa_controller.despesa_cadastrar);
-route.post('/inserir', despesa_controller.despesa_inserir);
-route.post('/deletar', despesa_controller.despesa_deletar);
+route.get('/listagem', controller.despesa_lista);
+route.get('/cadastrar', controller.despesa_cadastrar);
+route.post('/inserir', controller.despesa_inserir);
+route.post('/deletar', controller.despesa_deletar);
 
 module.exports = route;

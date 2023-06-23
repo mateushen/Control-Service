@@ -9,7 +9,7 @@ exports.obra_despesas = asyncHandler(async (req, res, next) => {
     await Obra.sync();
     await Despesa.sync();
 
-    sequelize.query('SELECT * FROM obra INNER JOIN despesa ON obra.id = despesa.idObra', {
+    sequelize.query(`SELECT * FROM obra INNER JOIN despesa ON obra.id = despesa.idObra WHERE obra.id = ${req.body.id}`, {
         type: Sequelize.QueryTypes.SELECT,
     }).then((obra) => {
         res.render('obra/despesas', { obra: obra });

@@ -13,7 +13,7 @@
 
     <header class="header"></header>
 
-    <h3>Lista de obras</h3>
+    <h3>Lista de Obras</h3>
 
     {{#each obra}}
     <div class="container">
@@ -32,6 +32,11 @@
                 <button type="submit">Editar</button>
             </form>
         </div>
+
+        <form action="/obra/despesas" method="post">
+            <input type="hidden" name="id" id="id" value={{this.id}}>
+            <button type="submit">Ver despesas</button>
+        </form>
 
     </div>
     {{/each}}

@@ -57,6 +57,14 @@ app.get('/', (req, res) => {
   })
 });
 
+app.get('/usuario/cadastrar', (req, res) => {
+  checkUsuario().then((response) => {
+    if (response) {
+      res.render('usuario/login');
+    }
+  })
+});
+
 app.listen(3000, () => {
   console.log('Server rodando')
 });
