@@ -6,28 +6,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Serviços</title>
+    <link rel="stylesheet" type="text/css" href="/css/estilo.css">
 </head>
 
 <body>
 
-    <h3>Cadastro de Despesa</h3>
+    <header class="header"><a href="/despesa/listagem"><img src="/img/icon-voltar.png" width="90"></a></header>
 
-    <form action="/despesa/inserir" method="post">
-        <label for="descricao">Descrição</label><br>
-        <input type="text" name="descricao" id="descricao"><br>
-        <label for="valordespesa">Valor</label><br>
-        <input type="text" name="valordespesa" id="valordespesa"><br>
+    <main>
 
-        <select name="idObra" id="idObra">
-            <option value="0" selected hidden>- Selecione a obra -</option>
-            {{#each obra}}
-            <option value={{this.id}}>{{this.endereco}}</option>
-            {{/each}}
-        </select>
+        <h3 class="title">Cadastro de Despesa</h3>
 
-        <button>Cadastrar</button>
-    </form>
+        <form action="/despesa/inserir" method="post">
 
+            <label for="descricao">Descrição</label><br>
+            <input type="text" name="descricao" id="descricao"><br>
+
+            <label for="valordespesa">Valor</label><br>
+            <input type="text" name="valordespesa" id="valordespesa"><br>
+
+            <label for="obra">Obra</label><br>
+            <select name="idObra" id="idObra">
+                <option value="0" selected hidden>- Selecione a obra -</option>
+                {{#each obra}}
+                <option value={{this.id}}>{{this.endereco}}</option>
+                {{/each}}
+            </select>
+
+            <br><br><br>
+
+            <button>Cadastrar</button>
+        </form>
+
+    </main>
 </body>
 
 </html>

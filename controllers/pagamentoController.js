@@ -44,7 +44,7 @@ exports.pagamento_inserir = asyncHandler(async (req, res, next) => {
         const { qtd_horas, data, idFuncionario, idObra } = req.body;
         if (qtd_horas && data && idFuncionario && idObra) {
             const pagamento = await Pagamento.create(req.body);
-            res.redirect('/pagamento/listagem');
+            res.redirect('/pagamento/cadastrar');
         }
     } catch (error) {
         console.error('Erro ao inserir pagamento:', error);

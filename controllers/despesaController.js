@@ -20,7 +20,7 @@ exports.despesa_inserir = asyncHandler(async (req, res, next) => {
         const { descricao, valordespesa, idObra } = req.body;
         if (descricao && valordespesa && idObra) {
             const despesa = await Despesa.create(req.body);
-            res.redirect('/despesa/listagem');
+            res.redirect('/despesa/cadastrar');
         } else {
             console.log('Erro ao inserir despesa');
         }

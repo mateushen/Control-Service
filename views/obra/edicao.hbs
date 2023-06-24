@@ -6,22 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Serviços</title>
+    <link rel="stylesheet" type="text/css" href="/css/estilo.css">
 </head>
 
 <body>
 
-    <h3>Edição de obras</h3>
+    <header class="header"><a href="/obra/listagem"><img src="/img/icon-voltar.png" width="90"></a></header>
 
-    <form action="/obra/salvar_edicao" method="post">
-        <input type="hidden" name="id" id="id" value={{obra.id}}>
-        <label for="endereco">Endereço</label><br>
-        <input type="text" name="endereco" id="endereco" value={{obra.endereco}}><br>
-        <label for="valorservico">Valor do serviço</label><br>
-        <input type="text" name="valorservico" id="valorservico" value={{obra.valorservico}}><br>
-        <label for="descricao">Descrição</label><br>
-        <input type="text" name="descricao" id="descricao" value={{obra.descricao}}><br>
-        <button>Salvar</button>
-    </form>
+    <main>
+
+        <h3 class="title">Edição de obras</h3>
+
+        <form action="/obra/salvar_edicao" method="post">
+
+            <input type="hidden" name="id" id="id" value={{obra.id}}>
+
+            <label for="endereco">Endereço</label><br>
+            <input type="text" name="endereco" id="endereco" value={{obra.endereco}}><br>
+
+            <label for="valorservico">Valor do serviço</label><br>
+            <input type="text" name="valorservico" id="valorservico" value={{obra.valorservico}}><br>
+
+            <label for="descricao">Descrição</label><br>
+            <input type="text" name="descricao" id="descricao" value={{obra.descricao}}>
+
+            <br><br><br>
+
+            <button>Salvar</button>
+        </form>
+
+    </main>
+
 </body>
 
 </html>

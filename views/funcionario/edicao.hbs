@@ -6,18 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Serviços</title>
+    <link rel="stylesheet" type="text/css" href="/css/estilo.css">
 </head>
 
 <body>
-    <h3>Edição de Funcionário</h3>
-    <form action="/funcionario/salvar_edicao" method="post">
-        <input type="hidden" name="id" id="id" value={{funcionario.id}}>
-        <label for="nome">Nome</label><br>
-        <input type="text" name="nome" id="nome" value={{funcionario.nome}}><br>
-        <label for="valorhora">Valor Por Hora</label><br>
-        <input type="text" name="valorhora" id="valorhora" value={{funcionario.valorhora}}><br>
-        <button>Salvar</button>
-    </form>
+
+    <header class="header"><a href="/funcionario/listagem"><img src="/img/icon-voltar.png" width="90"></a></header>
+
+    <main>
+
+        <h3>Edição de Funcionário</h3>
+
+        <form action="/funcionario/salvar_edicao" method="post">
+
+            <input type="hidden" name="id" id="id" value={{funcionario.id}}>
+
+            <label for="nome">Nome</label><br>
+            <input type="text" name="nome" id="nome" value={{funcionario.nome}}><br>
+
+            <label for="valorhora">Valor Por Hora</label><br>
+            <input type="text" name="valorhora" id="valorhora" value={{funcionario.valorhora}}>
+
+            <br><br><br>
+
+            <button>Salvar</button>
+        </form>
+
+    </main>
+
 </body>
 
 </html>

@@ -6,20 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Serviços</title>
+    <link rel="stylesheet" type="text/css" href="/css/estilo.css">
 </head>
 
 <body>
 
-    <h3>Cadastro de Funcionário</h3>
+    <header class="header"><a href="/funcionario/listagem"><img src="/img/icon-voltar.png" width="90"></a></header>
 
-    <form action="/funcionario/inserir" method="post">
-        <label for="nome">Nome</label><br>
-        <input type="text" name="nome" id="nome"><br>
-        <label for="valorhora">Valor por hora</label><br>
-        <input type="text" name="valorhora" id="valorhora"><br>
+    <main>
 
-        <button>Cadastrar</button>
-    </form>
+        <h3 class="title">Cadastro de Funcionário</h3>
+
+        <form action="/funcionario/inserir" method="post">
+
+            <label for="nome">Nome</label><br>
+            <input type="text" name="nome" id="nome"><br>
+
+            <label for="valorhora">Valor por hora</label><br>
+            <input type="text" name="valorhora" id="valorhora">
+
+            <br><br><br>
+
+            <button>Cadastrar</button>
+        </form>
+
+    </main>
+
 </body>
 
 </html>

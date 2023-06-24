@@ -1,0 +1,142 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.header {
+    background-color: #0a1a17;
+    width: 100%;
+    height: 7rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.header-home {
+    background-color: #0a1a17;
+    width: 100%;
+    height: 7rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.header a img {
+    margin-left: 40%;
+}
+
+main {
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    padding: 2rem 0 3rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-line {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.widget {
+    width: 12em;
+    height: 12em;
+    border-radius: 1em;
+    background-color: #f5f5f5;
+    box-shadow: 0 1em 1.5em;
+    color: #a3a3a3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.tag {
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    margin-top: 0.5rem;
+}
+
+.widget:hover {
+    cursor: pointer;
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
+}
+
+a {
+    text-decoration: none;
+}
+
+.title {
+    margin-top: 1.5em;
+    border-radius: 0.5em;
+    background-color: #193b36;
+    padding: 1%;
+    color: #f5f5f5;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+    padding: 4%;
+    border-radius: 0 0 1em 1em;
+}
+
+input {
+    padding: 0.6em;
+    font-size: 15px;
+    background-color: transparent;
+    color: #000;
+    letter-spacing: 0.15em;
+    border: none;
+    outline: none;
+    margin-bottom: 1em;
+    border-bottom: 1px solid #a3a3a3;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+select {
+    margin-top: 2%;
+    text-align: center;
+    font-size: 14px;
+    border: none;
+    padding: 0.4em;
+    border-radius: 0.5em;
+    border-bottom: 1px solid #a3a3a3;
+}
+
+label {
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+button {
+    width: 12em;
+    height: 3em;
+    margin: auto;
+    border-radius: 0.5em;
+    color:#fff;
+    background-color: #8C110A;
+    border: none;
+}
+
+button:hover {
+    color: #AB2114;
+}

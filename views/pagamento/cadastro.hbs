@@ -6,33 +6,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Serviços</title>
+    <link rel="stylesheet" type="text/css" href="/css/estilo.css">
 </head>
 
 <body>
-    <h3>Cadastro de Pagamento de Funcionários</h3>
 
-    <form action="/pagamento/inserir" method="post">
-        <label for="qtd_horas">Quantidade de horas</label><br>
-        <input type="text" name="qtd_horas" id="qtd_horas"><br>
-        <label for="texto">Data</label><br>
-        <input type="text" name="data" id="data"><br>
+    <header class="header"><a href="/pagamento/listagem"><img src="/img/icon-voltar.png" width="90"></a></header>
 
-        <select name="idFuncionario" id="idFuncionario">
-            <option value="0" selected hidden>- Selecione o funcionario -</option>
-            {{#each funcionario}}
-            <option value={{this.id}}>{{this.nome}}</option>
-            {{/each}}
-        </select>
+    <main>
 
-        <select name="idObra" id="idObra">
-            <option value="0" selected hidden>- Selecione a obra -</option>
-            {{#each obra}}
-            <option value={{this.id}}>{{this.endereco}}</option>
-            {{/each}}
-        </select>
+        <h3 class="title">Cadastro de Pagamento de Funcionários</h3>
 
-        <button>Cadastrar</button>
-    </form>
+        <form action="/pagamento/inserir" method="post">
+
+            <label for="qtd_horas">Quantidade de horas</label><br>
+            <input type="text" name="qtd_horas" id="qtd_horas"><br>
+
+            <label for="texto">Data</label><br>
+            <input type="text" name="data" id="data"><br>
+
+            <label for="funcionario">Funcionário</label><br>
+            <select name="idFuncionario" id="idFuncionario">
+                <option value="0" selected hidden>- Selecione o funcionario -</option>
+                {{#each funcionario}}
+                <option value={{this.id}}>{{this.nome}}</option>
+                {{/each}}
+            </select><br>
+
+            <label for="obra">Obra</label><br>
+            <select name="idObra" id="idObra">
+                <option value="0" selected hidden>- Selecione a obra -</option>
+                {{#each obra}}
+                <option value={{this.id}}>{{this.endereco}}</option>
+                {{/each}}
+            </select>
+
+            <br><br><br>
+
+            <button>Cadastrar</button>
+
+        </form>
+
+    </main>
+
 </body>
 
 </html>

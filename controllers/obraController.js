@@ -46,7 +46,7 @@ exports.obra_inserir = asyncHandler(async (req, res, next) => {
         const { endereco, valorservico, descricao } = req.body;
         if (endereco && valorservico && descricao) {
             const obra = await Obra.create(req.body);
-            res.redirect('/obra/listagem');
+            res.redirect('/obra/cadastrar');
         }
     } catch (error) {
         console.error('Erro ao inserir obra:', error);

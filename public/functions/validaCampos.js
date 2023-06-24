@@ -7,7 +7,7 @@ function camposUsuario() {
     // Validar campo de nome
     if (nomeUsuario.lenght < 3) {
       //return alert = ('Por favor, digite seu nome');
-      console('TEste')
+      console.log('TEste')
     }
   
     // // Validar campo de email

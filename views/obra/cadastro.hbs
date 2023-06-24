@@ -6,21 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Serviços</title>
+    <link rel="stylesheet" type="text/css" href="/css/estilo.css">
 </head>
 
 <body>
-    
-    <h3>Cadastro de Obras</h3>
 
-    <form action="/obra/inserir" method="post">
-        <label for="endereco">Endereço</label><br>
-        <input type="text" name="endereco" id="endereco"><br>
-        <label for="valorservico">Valor do serviço</label><br>
-        <input type="text" name="valorservico" id="valorservico"><br>
-        <label for="descricao">Descrição</label><br>
-        <input type="text" name="descricao" id="descricao"><br>
-        <button>Cadastrar</button>
-    </form>
+    <header class="header"><a href="/obra/listagem"><img src="/img/icon-voltar.png" width="90"></a></header>
+
+    <main>
+        <h3 class="title">Cadastro de Obras</h3>
+
+        <form action="/obra/inserir" method="post">
+
+            <label for="endereco">Endereço</label><br>
+            <input type="text" name="endereco" id="endereco"><br>
+
+            <label for="valorservico">Valor do serviço</label><br>
+            <input type="text" name="valorservico" id="valorservico"><br>
+
+            <label for="descricao">Descrição</label><br>
+            <input type="text" name="descricao" id="descricao">
+
+            <br><br><br>
+
+            <button>Cadastrar</button>
+        </form>
+
+    </main>
+
 </body>
 
 </html>

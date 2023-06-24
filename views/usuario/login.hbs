@@ -6,20 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Serviços</title>
+    <link rel="stylesheet" type="text/css" href="/css/estilo.css">
 </head>
 
 <body>
 
-    <h3>Login</h3>
-    <form action="/usuario/verifica" method="post" onsubmit="return camposUsuario()">
-        <label for="nome">Nome</label><br>
-        <input type="text" name="nome" id="nome"><br>
-        <label for="senha">Senha</label><br>
-        <input type="text" name="senha" id="senha"><br>
+    <header class="header"></header>
 
-        <script src="/public/functions/validaCampos.js"></script>
-        <button>LOGIN</button>
-    </form>
+    <main>
+
+        <h3 class="title">Login</h3>
+
+        <form action="/usuario/verifica" method="post">
+
+            <label for="nome">Nome</label><br>
+            <input type="text" name="nome" id="nome"><br>
+
+            <label for="senha">Senha</label><br>
+            <input type="text" name="senha" id="senha"><br>
+
+            <br><br><br>
+
+            <button>Entrar</button>
+            
+        </form>
+
+    </main>
+
 </body>
 
 </html>

@@ -30,7 +30,7 @@ exports.funcionario_inserir = asyncHandler(async (req, res, next) => {
 
         if (nome && valorhora) {
             const funcionario = await Funcionario.create(req.body);
-            res.redirect('/funcionario/listagem');
+            res.redirect('/funcionario/cadastrar');
         } else {
             console.log('Erro ao inserir funcionário');
         }
