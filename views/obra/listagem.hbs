@@ -8,6 +8,7 @@
     <title>Controle de Serviços</title>
     <link rel="stylesheet" type="text/css" href="/css/estilo.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script type="text/javascript" src="/functions/deleta.js"></script>
 </head>
 
 <body>
@@ -35,8 +36,8 @@
                                 <td class="item">{{this.valorservico}}</td>
                                 <td class="item">{{this.descricao}}</td>
                                 <td class="action">
-                                    <form action="/obra/deletar" method="post">
-                                        <input type="hidden" name="id" id="id" value={{this.id}}>
+                                    <form class="form-delete">
+                                        <input type="hidden" class="id-delete" name="id" id="id" value={{this.id}}>
                                         <input id="delete" type="submit" value="">
                                     </form>
                                 </td>
@@ -64,6 +65,7 @@
             <br>
             <div class="new-register">
                 <a href="/obra/cadastrar"><img src="/img/icon-add.png" width="40">NOVA OBRA</a>
+                <input type="hidden" id="url" value="/obra/deletar">
             </div>
 
     </main>

@@ -13,7 +13,6 @@ const Obra = sequelize.define('Obra', {
   },
   descricao: {
     type: DataTypes.STRING,
-    allowNull: true
   }
 }, {
   tableName: 'Obra'

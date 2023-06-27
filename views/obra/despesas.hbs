@@ -8,6 +8,7 @@
     <title>Controle de Serviços</title>
     <link rel="stylesheet" type="text/css" href="/css/estilo.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script type="text/javascript" src="/functions/deleta.js"></script>
 </head>
 
 <body>
@@ -15,7 +16,7 @@
     <header class="header"><a href="/usuario/inicio"><img src="/img/icon-voltar.png" width="90"></a></header>
 
     <main>
-        <h2>Despesas</h3>
+        <h2>Despesas</h2>
             <div class="container">
                 <div class="table-responsive">
                     <table class="table table-bordered">
@@ -33,8 +34,8 @@
                                 <td class="item">{{this.endereco}}</td>
                                 <td class="item">{{this.valordespesa}}</td>
                                 <td class="action">
-                                    <form action="/despesa/deletar" method="post">
-                                        <input type="hidden" name="id" id="id" value={{this.id}}>
+                                    <form class="form-delete">
+                                        <input type="hidden" class="id-delete" name="id" id="id" value={{this.id}}>
                                         <input id="delete" type="submit" value="">
                                     </form>
                                 </td>
@@ -43,6 +44,12 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+
+            <br>
+            <div class="new-register">
+                <a href="/despesa/cadastrar"><img src="/img/icon-add.png" width="40">NOVA DESPESA</a>
+                <input type="hidden" id="url" value="/despesa/deletar">
             </div>
 
     </main>

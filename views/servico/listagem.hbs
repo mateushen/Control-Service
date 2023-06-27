@@ -8,6 +8,7 @@
     <title>Controle de Serviços</title>
     <link rel="stylesheet" type="text/css" href="/css/estilo.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script type="text/javascript" src="/functions/deleta.js"></script>
 </head>
 
 <body>
@@ -16,41 +17,42 @@
 
     <main>
         <h2>Lista de serviços registrados</h2>
-            <div class="container">
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
-                                <th>Qtd de horas</th>
-                                <th>Obra</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {{#each servico}}
-                            <tr>
-                                <td class="item">{{this.id}}</td>
-                                <td class="item">{{this.nome}}</td>
-                                <td class="item">{{this.qtd_horas}}</td>
-                                <td class="item">{{this.endereco}}</td>
-                                <td class="action">
-                                    <form action="/servico/deletar" method="post">
-                                        <input type="hidden" name="id" id="id" value={{this.id}}>
-                                        <input id="delete" type="submit" value="">
-                                    </form>
-                                </td>
-                            </tr>
-                            {{/each}}
-                        </tbody>
-                    </table>
-                </div>
+        <div class="container">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Qtd de horas</th>
+                            <th>Obra</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each servico}}
+                        <tr>
+                            <td class="item">{{this.id}}</td>
+                            <td class="item">{{this.nome}}</td>
+                            <td class="item">{{this.qtd_horas}}</td>
+                            <td class="item">{{this.endereco}}</td>
+                            <td class="action">
+                                <form class="form-delete">
+                                    <input type="hidden" class="id-delete" name="id" id="id" value={{this.id}}>
+                                    <input id="delete" type="submit" value="">
+                                </form>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
             </div>
+        </div>
 
-            <br>
-            <div class="new-register">
-                <a href="/obra/cadastrar"><img src="/img/icon-add.png" width="40">NOVO SERVIÇO</a>
-            </div>
+        <br>
+        <div class="new-register">
+            <a href="/servico/cadastrar"><img src="/img/icon-add.png" width="40">NOVO SERVIÇO</a>
+            <input type="hidden" id="url" value="/servico/deletar">
+        </div>
 
     </main>
 

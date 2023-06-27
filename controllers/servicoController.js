@@ -11,7 +11,7 @@ exports.servico_lista = asyncHandler(async (req, res, next) => {
     await Funcionario.sync();
     await Obra.sync();
 
-    sequelize.query('SELECT * FROM servico INNER JOIN obra ON servico.idObra = obra.id INNER JOIN funcionario On servico.idFuncionario = funcionario.id', {
+    sequelize.query('SELECT servico.id AS id, funcionario.nome AS nome, servico.qtd_horas AS qtd_horas, obra.endereco AS endereco FROM servico INNER JOIN obra ON servico.idObra = obra.id INNER JOIN funcionario On servico.idFuncionario = funcionario.id ORDER BY servico.id', {
         type: Sequelize.QueryTypes.SELECT,
     }).then((servico) => {
         console.log(servico)
@@ -59,9 +59,20 @@ exports.servico_deletar = asyncHandler(async (req, res, next) => {
         const servico = await Servico.findByPk(id);
         if (servico) {
             await Servico.destroy({ where: { id } });
-            res.redirect('/servico/listagem');
+            res.status(200).json({
+                status: 'ok',
+                mensagem: 'Dados excluídos!'
+            });
+        } else {
+            res.status(500).json({
+                status: 'error',
+                mensagem: 'Erro ao excluir!'
+            });
         }
     } catch (error) {
-        console.error('Erro ao deletar serviço:', error);
+        res.status(500).json({
+            status: 'error',
+            mensagem: error
+        });
     }
 });

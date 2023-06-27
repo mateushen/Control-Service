@@ -64,11 +64,20 @@ exports.despesa_deletar = asyncHandler(async (req, res, next) => {
         const despesa = await Despesa.findByPk(id);
         if (despesa) {
             await despesa.destroy({ where: { id } });
-            res.redirect('/obra/listagem');
+            res.status(200).json({
+                status: 'ok',
+                mensagem: 'Dados excluídos!'
+            });
         } else {
-            console.log('Erro ao deletar despesa');
+            res.status(500).json({
+                status: 'error',
+                mensagem: 'Erro ao excluir!'
+            });
         }
     } catch (error) {
-        console.error('Erro ao deletar despesa:', error);
+        res.status(500).json({
+            status: 'error',
+            mensagem: error
+        });
     }
 });

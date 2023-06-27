@@ -54,12 +54,21 @@ exports.funcionario_deletar = asyncHandler(async (req, res, next) => {
         const funcionario = await Funcionario.findByPk(id);
         if (funcionario) {
             await Funcionario.destroy({ where: { id } });
-            res.redirect('/funcionario/listagem');
+            res.status(200).json({
+                status: 'ok',
+                mensagem: 'Dados excluídos!'
+            });
         } else {
-            console.log('Erro ao deletar funcionario');
+            res.status(500).json({
+                status: 'error',
+                mensagem: 'Erro ao excluir!'
+            });
         }
     } catch (error) {
-        console.error('Erro ao deletar funcionario:', error);
+        res.status(500).json({
+            status: 'error',
+            mensagem: error
+        });
     }
 });
 

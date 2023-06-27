@@ -9,7 +9,7 @@ exports.obra_despesas = asyncHandler(async (req, res, next) => {
     await Obra.sync();
     await Despesa.sync();
 
-    sequelize.query(`SELECT * FROM obra INNER JOIN despesa ON obra.id = despesa.idObra WHERE obra.id = ${req.body.id}`, {
+    sequelize.query(`SELECT * FROM obra INNER JOIN despesa ON obra.id = despesa.idObra WHERE obra.id = ${req.body.id} ORDER BY despesa.id`, {
         type: Sequelize.QueryTypes.SELECT,
     }).then((obra) => {
         res.render('obra/despesas', { obra: obra });
@@ -67,13 +67,25 @@ exports.obra_inserir = asyncHandler(async (req, res, next) => {
 exports.obra_deletar = asyncHandler(async (req, res, next) => {
     try {
         const { id } = req.body;
+        console.log(id);
         const obra = await Obra.findByPk(id);
         if (obra) {
             await obra.destroy({ where: { id } });
-            res.redirect('/obra/listagem');
+            res.status(200).json({
+                status: 'ok',
+                mensagem: 'Dados excluídos!'
+            });
+        } else {
+            res.status(500).json({
+                status: 'error',
+                mensagem: 'Erro ao excluir!'
+            });
         }
     } catch (error) {
-        console.error('Erro ao deletar obra:', error);
+        res.status(500).json({
+            status: 'error',
+            mensagem: error
+        });
     }
 });
 
