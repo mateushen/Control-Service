@@ -12,12 +12,16 @@ exports.obra_despesas = asyncHandler(async (req, res, next) => {
     sequelize.query(`SELECT * FROM obra INNER JOIN despesa ON obra.id = despesa.idObra WHERE obra.id = ${req.body.id} ORDER BY despesa.id`, {
         type: Sequelize.QueryTypes.SELECT,
     }).then((obra) => {
-        res.render('obra/despesas', { obra: obra });
+        if (obra.length > 0) {
+            res.render('obra/despesas', { obra: obra });
+        } else {
+            res.redirect('/obra/listagem');
+        }
+
     }).catch((error) => {
         console.error(error);
     });
 });
-
 
 exports.obra_lista = asyncHandler(async (req, res, next) => {
     await Obra.sync();
