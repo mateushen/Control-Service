@@ -13,10 +13,10 @@
 
 <body>
 
-    <header class="header"><a href="/usuario/inicio"><img src="/img/icon-voltar.png" width="90"></a></header>
+    <header class="header"><a href="/funcionario/listagem"><img src="/img/icon-voltar.png" width="90"></a></header>
 
     <main>
-        <h2>Lista de funcionários</h2>
+        <h2>Serviços</h2>
         <div class="container">
             <div class="table-responsive">
                 <table class="table table-bordered">
@@ -24,7 +24,9 @@
                         <tr>
                             <th>ID</th>
                             <th>Nome</th>
-                            <th>Valor por hora</th>
+                            <th>Qtd de horas</th>
+                            <th>Data</th>
+                            <th>Endereco</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,26 +34,13 @@
                         <tr>
                             <td class="item">{{this.id}}</td>
                             <td class="item">{{this.nome}}</td>
-                            <td class="item">{{this.valorhora}}</td>
+                            <td class="item">{{this.qtd_horas}}</td>
+                            <td class="item">{{this.data}}</td>
+                            <td class="item">{{this.endereco}}</td>
                             <td class="action">
                                 <form class="form-delete">
                                     <input type="hidden" class="id-delete" name="id" id="id" value={{this.id}}>
-                                    <input type="hidden" id="url" value="/funcionario/deletar">
                                     <input id="delete" type="submit" value="">
-                                </form>
-                            </td>
-
-                            <td class="action">
-                                <form action="/funcionario/edicao" method="post">
-                                    <input type="hidden" name="id" id="id" value={{this.id}}>
-                                    <input id="edit" type="submit" value="">
-                                </form>
-                            </td>
-
-                            <td class="action">
-                                <form action="/funcionario/servicos" method="post">
-                                    <input type="hidden" name="id" id="id" value={{this.id}}>
-                                    <button id="view">Serviços</button>
                                 </form>
                             </td>
                         </tr>
@@ -59,11 +48,23 @@
                     </tbody>
                 </table>
             </div>
+            <br>
+            <div class="report">
+                {{#each relatorio}}
+                <p>Total de horas trabalhadas:
+                <h2 class="value">{{this.total_horas}}</h2>
+                </p>
+                <p>Valor de pagamento parcial:
+                <h2 class="value">${{this.pgto_parcial}}</h2>
+                </p>
+                {{/each}}
+            </div>
         </div>
 
-        <br>
+        <br><br>
         <div class="new-register">
-            <a href="/funcionario/cadastrar"><img src="/img/icon-add.png" width="40">NOVO FUNCIONÁRIO</a>
+            <a href="/servico/cadastrar"><img src="/img/icon-add.png" width="40">NOVO SERVIÇO</a>
+            <input type="hidden" id="url" value="/servico/deletar">
         </div>
 
     </main>

@@ -1,6 +1,9 @@
 const { text } = require("body-parser");
 const Funcionario = require("../models/funcionario");
+const Servico = require("../models/servico");
 const asyncHandler = require("express-async-handler");
+const { Sequelize } = require('sequelize');
+const sequelize = require('../database/mysql');
 
 exports.funcionario_lista = asyncHandler(async (req, res, next) => {
     await Funcionario.sync();
@@ -93,4 +96,34 @@ exports.funcionario_salvar_edicao = asyncHandler(async (req, res, next) => {
             mensagem: error
         });
     }
+});
+
+exports.funcionario_servicos = asyncHandler(async (req, res, next) => {
+    await Funcionario.sync();
+    await Servico.sync();
+
+    sequelize.query(`SELECT funcionario.valorhora AS valorhora, servico.id AS id, funcionario.id AS idFuncionario, funcionario.nome AS nome, servico.qtd_horas AS qtd_horas, servico.data AS data, obra.endereco AS endereco 
+        FROM funcionario 
+        INNER JOIN servico ON funcionario.id = servico.idFuncionario 
+        INNER JOIN obra ON servico.idObra = obra.id 
+        WHERE funcionario.id = ${req.body.id} ORDER BY servico.id`, {
+        type: Sequelize.QueryTypes.SELECT,
+    }).then((funcionario) => {
+        console.log(funcionario);
+        if (funcionario.length > 0) {
+            let soma = 0;
+            for (let i = 0; i < funcionario.length; i++) {
+                soma += funcionario[i].qtd_horas;
+            }
+            var relatorio = [
+                { total_horas: soma, pgto_parcial: soma * funcionario[0].valorhora }
+            ];
+            console.log(relatorio);
+            res.render('funcionario/servicos', { funcionario: funcionario, relatorio: relatorio });
+        }else{
+            res.redirect('/funcionario/listagem');
+        }
+    }).catch((error) => {
+        console.error(error);
+    });
 });

@@ -219,3 +219,7 @@ main {
     -webkit-transform: scale(1.02);
     transform: scale(1.02);
 }
+
+.value {
+    font-size: 20px;
+}

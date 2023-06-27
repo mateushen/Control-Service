@@ -18,5 +18,6 @@ route.post('/inserir', controller.funcionario_inserir);
 route.post('/edicao', controller.funcionario_editando);
 route.post('/salvar_edicao', controller.funcionario_salvar_edicao);
 route.post('/deletar', controller.funcionario_deletar);
+route.post('/servicos', controller.funcionario_servicos);
 
 module.exports = route;
