@@ -7,23 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Serviços</title>
     <link rel="stylesheet" type="text/css" href="/css/estilo.css">
+    <script type="text/javascript" src="/functions/validaServico.js"></script>
 </head>
 
 <body>
 
-    <header class="header"><a href="/pagamento/listagem"><img src="/img/icon-voltar.png" width="90"></a></header>
+    <header class="header"><a href="/servico/listagem"><img src="/img/icon-voltar.png" width="90"></a></header>
 
     <main>
 
-        <h3 class="title">Cadastro de Pagamento de Funcionários</h3>
+        <h3 class="title">Cadastro de serviço de funcionário</h3>
 
-        <form action="/pagamento/inserir" method="post">
+        <form>
 
             <label for="qtd_horas">Quantidade de horas</label><br>
-            <input type="text" name="qtd_horas" id="qtd_horas"><br>
+            <input type="text" name="qtd_horas" id="qtd_horas" onkeypress="return somenteNumeros(event)"><br>
 
             <label for="texto">Data</label><br>
-            <input type="text" name="data" id="data"><br>
+            <input type="text" name="data" id="data" onkeypress="return somenteNumeros(event)" maxlength="10"><br>
 
             <label for="funcionario">Funcionário</label><br>
             <select name="idFuncionario" id="idFuncionario">
@@ -43,9 +44,13 @@
 
             <br><br><br>
 
-            <button>Cadastrar</button>
-
+            <button class="btn-form">Cadastrar</button>
+            <script src="/functions/formataInput.js"></script>
         </form>
+
+        <div class="box-msg">
+            <p id="msg"></p>
+        </div>
 
     </main>
 

@@ -27,14 +27,21 @@ exports.usuario_inserir = asyncHandler(async (req, res, next) => {
             const senha_crip = await bcrypt.hash(senha, 10);
             console.log(senha_crip);
             const usuario = await Usuario.create({ nome: nome, senha: senha_crip });
-            res.redirect('/');
+            res.status(200).json({
+                status: 'ok',
+                mensagem: 'Dados cadastrados!',
+            });
         } else {
-            console.log('Erro ao inserir usuario');
-            res.redirect('/');
+            res.status(500).json({
+                status: 'error',
+                mensagem: 'Erro ao realizar o login!'
+            });
         }
     } catch (error) {
-        console.error('Erro ao inserir usuario:', error);
-        res.redirect('/');
+        res.status(500).json({
+            status: 'error',
+            mensagem: error
+        });
     }
 });
 
@@ -46,29 +53,35 @@ exports.usuario_verifica = asyncHandler(async (req, res, next) => {
         const usuario = await Usuario.findOne({ where: { nome: nome } });
         if (usuario) {
             const valida = await bcrypt.compare(senha, usuario.senha);
-
             if (valida && usuario.dataValues.nome) {
                 console.log('Usuário encontrado');
                 req.session.logado = true;
                 req.session.nome = usuario.dataValues.nome;
-                res.redirect('/usuario/inicio');
+                res.status(200).json({
+                    status: 'ok',
+                    mensagem: 'Sucesso ao realizar o login!'
+                });
             } else {
-                console.log('Usuário não encontrado');
-                res.redirect('/');
+                res.status(500).json({
+                    status: 'error',
+                    mensagem: 'Erro ao realizar o login!'
+                });
             }
         } else {
-            console.log('Usuário não encontrado');
-            res.redirect('/');
+            res.status(500).json({
+                status: 'error',
+                mensagem: 'Erro ao realizar o login!'
+            });
         }
     } catch (error) {
-        console.error('Erro ao buscar usuario:', error);
-        alert('Usuário não encontrado!');
-        res.redirect('/');
+        res.status(500).json({
+            'status': 'erro',
+            mensagem: error
+        });
     }
 });
 
 exports.usuario_sair = asyncHandler(async (req, res, next) => {
     req.session.destroy((err) => { });
     res.redirect('/');
-  });
-  
+});

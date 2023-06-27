@@ -3,28 +3,28 @@ const sequelize = require('../database/mysql');
 const Funcionario = require('./funcionario');
 const Obra = require('./obra');
 
-const Pagamento = sequelize.define('Pagamento', {
+const Servico = sequelize.define('Servico', {
   qtd_horas: {
     type: DataTypes.INTEGER,
     allowNull: false
   },
   data: {
-    type: DataTypes.DOUBLE,
+    type: DataTypes.STRING,
     allowNull: false
   }
 }, {
-  tableName: 'Pagamento'
+  tableName: 'Servico'
 });
 
-Obra.hasOne(Pagamento, {
+Obra.hasOne(Servico, {
   foreignKey: 'idObra',
   allowNull: false
 });
 
-Funcionario.hasOne(Pagamento, {
+Funcionario.hasOne(Servico, {
   foreignKey: 'idFuncionario',
   allowNull: false
 });
 
 
-module.exports = Pagamento;
+module.exports = Servico;

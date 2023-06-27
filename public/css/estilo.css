@@ -127,16 +127,95 @@ label {
     font-weight: bold;
 }
 
-button {
+.btn-form {
     width: 12em;
     height: 3em;
     margin: auto;
     border-radius: 0.5em;
-    color:#fff;
+    color: #fff;
     background-color: #8C110A;
     border: none;
 }
 
-button:hover {
+.btn-form:hover {
     color: #AB2114;
+    cursor: pointer;
+}
+
+.box-msg {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#msg {
+    color: #000;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.item {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 2em;
+}
+
+.action {
+    width: 1.5em;
+}
+
+#delete {
+    width: 2em;
+    height: 2em;
+    background-image: url("/img/iconExclui.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 2em;
+    border: none;
+}
+
+#edit {
+    width: 2em;
+    height: 2em;
+    background-image: url("/img/iconEdita.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 2em;
+    border: none;
+}
+
+#view {
+    padding: 0.3em;
+    border-radius: 0.4em;
+}
+
+.new-register {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-register img {
+    margin: 0.5em;
+}
+
+.new-register a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.new-register a:hover {
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
 }

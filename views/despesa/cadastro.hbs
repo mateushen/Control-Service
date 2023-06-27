@@ -7,23 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Serviços</title>
     <link rel="stylesheet" type="text/css" href="/css/estilo.css">
+    <script type="text/javascript" src="/functions/validaDespesa.js"></script>
 </head>
 
 <body>
 
-    <header class="header"><a href="/despesa/listagem"><img src="/img/icon-voltar.png" width="90"></a></header>
+    <header class="header"><a href="/usuario/inicio"><img src="/img/icon-voltar.png" width="90"></a></header>
 
     <main>
 
-        <h3 class="title">Cadastro de Despesa</h3>
+        <h2 class="title">Cadastro de despesa</h2>
 
         <form action="/despesa/inserir" method="post">
 
             <label for="descricao">Descrição</label><br>
-            <input type="text" name="descricao" id="descricao"><br>
+            <input type="text" name="descricao" id="descricao" onkeypress="return somenteLetras(event)"><br>
 
             <label for="valordespesa">Valor</label><br>
-            <input type="text" name="valordespesa" id="valordespesa"><br>
+            <input type="text" name="valordespesa" id="valordespesa" onkeypress="return somenteNumeros(event)"><br>
 
             <label for="obra">Obra</label><br>
             <select name="idObra" id="idObra">
@@ -35,8 +36,13 @@
 
             <br><br><br>
 
-            <button>Cadastrar</button>
+            <button class="btn-form">Cadastrar</button>
+            <script src="/functions/formataInput.js"></script>
         </form>
+
+        <div class="box-msg">
+            <p id="msg"></p>
+        </div>
 
     </main>
 </body>

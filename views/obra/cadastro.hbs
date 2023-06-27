@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Serviços</title>
     <link rel="stylesheet" type="text/css" href="/css/estilo.css">
+    <script type="text/javascript" src="/functions/validaObra.js"></script>
 </head>
 
 <body>
@@ -14,23 +15,29 @@
     <header class="header"><a href="/obra/listagem"><img src="/img/icon-voltar.png" width="90"></a></header>
 
     <main>
-        <h3 class="title">Cadastro de Obras</h3>
+        <h3 class="title">Cadastro de obra</h3>
 
-        <form action="/obra/inserir" method="post">
+        <form>
+
+            <input type="hidden" name="url" url="url" value="inserir">
 
             <label for="endereco">Endereço</label><br>
             <input type="text" name="endereco" id="endereco"><br>
 
             <label for="valorservico">Valor do serviço</label><br>
-            <input type="text" name="valorservico" id="valorservico"><br>
+            <input type="text" name="valorservico" id="valorservico" onkeypress="return somenteNumeros(event)"><br>
 
             <label for="descricao">Descrição</label><br>
             <input type="text" name="descricao" id="descricao">
 
             <br><br><br>
-
-            <button>Cadastrar</button>
+            <button class="btn-form">Cadastrar</button>
+            <script src="/functions/formataInput.js"></script>
         </form>
+
+        <div class="box-msg">
+            <p id="msg"></p>
+        </div>
 
     </main>
 

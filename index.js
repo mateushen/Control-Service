@@ -5,15 +5,15 @@ const bp = require('body-parser');
 const session = require('express-session');
 const checkUsuario = require('./public/functions/checkUser');
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
-
 const dbconnection = require('./database/mysql');
-
 const app = express();
+
+app.use(express.json());
 
 const despesa = require('./routes/despesa');
 const funcionario = require('./routes/funcionario');
 const obra = require('./routes/obra');
-const pagamento = require('./routes/pagamento');
+const servico = require('./routes/servico');
 const usuario = require('./routes/usuario');
 
 app.use(bp.json());
@@ -44,7 +44,7 @@ app.use(express.static(staticPath));
 app.use('/usuario', usuario);
 app.use('/funcionario', funcionario);
 app.use('/obra', obra);
-app.use('/pagamento', pagamento);
+app.use('/servico', servico);
 app.use('/despesa', despesa);
 
 app.get('/', (req, res) => {

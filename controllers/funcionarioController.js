@@ -24,18 +24,27 @@ exports.funcionario_editando = asyncHandler(async (req, res, next) => {
 
 exports.funcionario_inserir = asyncHandler(async (req, res, next) => {
     await Funcionario.sync();
-    
+
     try {
         const { nome, valorhora } = req.body;
-
+        console.log(nome);
         if (nome && valorhora) {
             const funcionario = await Funcionario.create(req.body);
-            res.redirect('/funcionario/cadastrar');
+            res.status(200).json({
+                status: 'ok',
+                mensagem: 'Dados cadastrados!'
+            });
         } else {
-            console.log('Erro ao inserir funcionário');
+            res.status(500).json({
+                status: 'error',
+                mensagem: 'Erro ao cadastrar!'
+            });
         }
     } catch (error) {
-        console.error('Erro ao inserir funcionário:', error);
+        res.status(500).json({
+            status: 'error',
+            mensagem: error
+        });
     }
 });
 
@@ -59,11 +68,20 @@ exports.funcionario_salvar_edicao = asyncHandler(async (req, res, next) => {
         const { id, nome, valorhora } = req.body;
         if (id && nome && valorhora) {
             await Funcionario.update({ nome, valorhora }, { where: { id } })
-            res.redirect('/funcionario/listagem');
+            res.status(200).json({
+                status: 'ok',
+                mensagem: 'Dados alterados!'
+            });
         } else {
-            console.log('Erro ao editar funcionario');
+            res.status(500).json({
+                status: 'error',
+                mensagem: 'Erro ao alterar!'
+            });
         }
     } catch (error) {
-        console.error('Erro ao editar funcionario:', error);
+        res.status(500).json({
+            status: 'error',
+            mensagem: error
+        });
     }
 });

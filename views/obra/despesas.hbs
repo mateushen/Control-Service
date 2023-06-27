@@ -7,23 +7,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Serviços</title>
     <link rel="stylesheet" type="text/css" href="/css/estilo.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
 <body>
-    <h3>Lista de obras</h3>
 
-    {{#each obra}}
-    <div class="container">
-        <div>
-            <p>{{this.endereco}}</p>
-            <p>{{this.valorservico}}</p>
-            <p>{{this.valordespesa}}</p>
-        </div>
+    <header class="header"><a href="/usuario/inicio"><img src="/img/icon-voltar.png" width="90"></a></header>
 
-    </div>
-    {{/each}}
+    <main>
+        <h2>Despesas</h3>
+            <div class="container">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Endereço</th>
+                                <th>Valor da Despesa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each obra}}
+                            <tr>
+                                <td class="item">{{this.id}}</td>
+                                <td class="item">{{this.endereco}}</td>
+                                <td class="item">{{this.valordespesa}}</td>
+                                <td class="action">
+                                    <form action="/despesa/deletar" method="post">
+                                        <input type="hidden" name="id" id="id" value={{this.id}}>
+                                        <input id="delete" type="submit" value="">
+                                    </form>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-    <br>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </body>
 

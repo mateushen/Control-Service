@@ -15,43 +15,29 @@
     <header class="header"><a href="/usuario/inicio"><img src="/img/icon-voltar.png" width="90"></a></header>
 
     <main>
-        <h2>Lista de obras</h3>
+        <h2>Lista de serviços registrados</h2>
             <div class="container">
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Endereço</th>
-                                <th>Valor do Serviço</th>
-                                <th>Descrição</th>
+                                <th>Nome</th>
+                                <th>Qtd de horas</th>
+                                <th>Obra</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{#each obra}}
+                            {{#each servico}}
                             <tr>
                                 <td class="item">{{this.id}}</td>
+                                <td class="item">{{this.nome}}</td>
+                                <td class="item">{{this.qtd_horas}}</td>
                                 <td class="item">{{this.endereco}}</td>
-                                <td class="item">{{this.valorservico}}</td>
-                                <td class="item">{{this.descricao}}</td>
                                 <td class="action">
-                                    <form action="/obra/deletar" method="post">
+                                    <form action="/servico/deletar" method="post">
                                         <input type="hidden" name="id" id="id" value={{this.id}}>
                                         <input id="delete" type="submit" value="">
-                                    </form>
-                                </td>
-
-                                <td class="action">
-                                    <form action="/obra/edicao" method="post">
-                                        <input type="hidden" name="id" id="id" value={{this.id}}>
-                                        <input id="edit" type="submit" value="">
-                                    </form>
-                                </td>
-
-                                <td class="action">
-                                    <form action="/obra/despesas" method="post">
-                                        <input type="hidden" name="id" id="id" value={{this.id}}>
-                                        <button id="view">Despesas</button>
                                     </form>
                                 </td>
                             </tr>
@@ -63,7 +49,7 @@
 
             <br>
             <div class="new-register">
-                <a href="/obra/cadastrar"><img src="/img/icon-add.png" width="40">NOVA OBRA</a>
+                <a href="/obra/cadastrar"><img src="/img/icon-add.png" width="40">NOVO SERVIÇO</a>
             </div>
 
     </main>

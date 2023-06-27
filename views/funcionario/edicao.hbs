@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Serviços</title>
     <link rel="stylesheet" type="text/css" href="/css/estilo.css">
+    <script type="text/javascript" src="/functions/validaFuncionario.js"></script>
 </head>
 
 <body>
@@ -15,22 +16,31 @@
 
     <main>
 
-        <h3>Edição de Funcionário</h3>
+        <h2 class="title">Edição de funcionário</h2>
 
-        <form action="/funcionario/salvar_edicao" method="post">
+        <form>
+
+            <input type="hidden" name="url" url="url" value="salvar_edicao">
 
             <input type="hidden" name="id" id="id" value={{funcionario.id}}>
 
             <label for="nome">Nome</label><br>
-            <input type="text" name="nome" id="nome" value={{funcionario.nome}}><br>
+            <input type="text" name="nome" id="nome" value={{funcionario.nome}}
+                onkeypress="return somenteLetras(event)"><br>
 
             <label for="valorhora">Valor Por Hora</label><br>
-            <input type="text" name="valorhora" id="valorhora" value={{funcionario.valorhora}}>
+            <input type="text" name="valorhora" id="valorhora" value={{funcionario.valorhora}}
+                onkeypress="return somenteNumeros(event)">
 
             <br><br><br>
 
-            <button>Salvar</button>
+            <button class="btn-form">Salvar</button>
+            <script src="/functions/formataInput.js"></script>
         </form>
+
+        <div class="box-msg">
+            <p id="msg"></p>
+        </div>
 
     </main>
 

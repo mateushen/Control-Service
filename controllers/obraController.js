@@ -46,10 +46,21 @@ exports.obra_inserir = asyncHandler(async (req, res, next) => {
         const { endereco, valorservico, descricao } = req.body;
         if (endereco && valorservico && descricao) {
             const obra = await Obra.create(req.body);
-            res.redirect('/obra/cadastrar');
+            res.status(200).json({
+                status: 'ok',
+                mensagem: 'Dados cadastrados!'
+            });
+        } else {
+            res.status(500).json({
+                status: 'error',
+                mensagem: 'Erro ao cadastrar!'
+            });
         }
     } catch (error) {
-        console.error('Erro ao inserir obra:', error);
+        res.status(500).json({
+            status: 'error',
+            mensagem: error
+        });
     }
 });
 
@@ -71,9 +82,20 @@ exports.obra_salvar_edicao = asyncHandler(async (req, res, next) => {
         const { id, endereco, valorservico, descricao } = req.body;
         if (id && endereco && valorservico) {
             await Obra.update({ endereco, valorservico, descricao }, { where: { id } })
-            res.redirect('/obra/listagem');
+            res.status(200).json({
+                status: 'ok',
+                mensagem: 'Dados alterados!'
+            });
+        } else {
+            res.status(500).json({
+                status: 'error',
+                mensagem: 'Erro ao alterar!'
+            });
         }
     } catch (error) {
-        console.error('Erro ao editar obra:', error);
+        res.status(500).json({
+            status: 'error',
+            mensagem: error
+        });
     }
 });

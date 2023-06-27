@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Serviços</title>
     <link rel="stylesheet" type="text/css" href="/css/estilo.css">
+    <script type="text/javascript" src="/functions/validaUsuario.js"></script>
 </head>
 
 <body>
@@ -15,21 +16,27 @@
 
     <main>
 
-        <h3 class="title">Cadastro de Usuário</h3>
+        <h2 class="title">Cadastro de usuário</h2>
 
-        <form action="/usuario/inserir" method="post">
+        <form>
+
+            <input type="hidden" name="url" url="url" value="inserir">
 
             <label for="nome">Nome</label><br>
-            <input type="text" name="nome" id="nome"><br>
+            <input type="text" name="nome" id="nome" maxlength="20"><br>
 
             <label for="senha">Senha</label><br>
-            <input type="text" name="senha" id="senha"><br>
+            <input type="password" name="senha" id="senha" maxlength="6"><br>
 
             <br><br><br>
 
-            <button>Cadastrar</button>
-            
+            <button class="btn-form">Cadastrar</button>
+
         </form>
+
+        <div class="box-msg">
+            <p id="msg"></p>
+        </div>
 
     </main>
 

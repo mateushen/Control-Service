@@ -7,39 +7,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Serviços</title>
     <link rel="stylesheet" type="text/css" href="/css/estilo.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
 <body>
 
-    <header class="header"></header>
+    <header class="header"><a href="/usuario/inicio"><img src="/img/icon-voltar.png" width="90"></a></header>
 
-    <h3>Lista de Funcionários</h3>
+    <main>
+        <h2>Lista de funcionários</h2>
+        <div class="container">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Valor por hora</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each funcionario}}
+                        <tr>
+                            <td class="item">{{this.id}}</td>
+                            <td class="item">{{this.nome}}</td>
+                            <td class="item">{{this.valorhora}}</td>
+                            <td class="action">
+                                <form action="/funcionario/deletar" method="post">
+                                    <input type="hidden" name="id" id="id" value={{this.id}}>
+                                    <input id="delete" type="submit" value="">
+                                </form>
+                            </td>
 
-    {{#each funcionario}}
-    <div class="container">
-        <div>
-            <p>{{this.nome}}</p>
-            <p>{{this.valorhora}}</p>
+                            <td class="action">
+                                <form action="/funcionario/edicao" method="post">
+                                    <input type="hidden" name="id" id="id" value={{this.id}}>
+                                    <input id="edit" type="submit" value="">
+                                </form>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div>
-            <form action="/funcionario/deletar" method="post">
-                <input type="hidden" name="id" id="id" value={{this.id}}>
-                <button type="submit">Deletar</button>
-            </form>
-            <form action="/funcionario/edicao" method="post">
-                <input type="hidden" name="id" id="id" value={{this.id}}>
-                <button type="submit">Editar</button>
-            </form>
+
+        <br>
+        <div class="new-register">
+            <a href="/funcionario/cadastrar"><img src="/img/icon-add.png" width="40">NOVO FUNCIONÁRIO</a>
         </div>
 
-    </div>
-    {{/each}}
+    </main>
 
-    <br>
-
-    <a href="/funcionario/cadastrar">Cadastrar</a>
-
-    <footer class="footer"></footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </body>
 

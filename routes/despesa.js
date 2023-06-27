@@ -12,7 +12,6 @@ route.use(function timeLog(req, res, next) {
   }
 });
 
-route.get('/listagem', controller.despesa_lista);
 route.get('/cadastrar', controller.despesa_cadastrar);
 route.post('/inserir', controller.despesa_inserir);
 route.post('/deletar', controller.despesa_deletar);

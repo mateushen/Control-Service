@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Serviços</title>
     <link rel="stylesheet" type="text/css" href="/css/estilo.css">
+    <script type="text/javascript" src="/functions/validaObra.js"></script>
 </head>
 
 <body>
@@ -17,7 +18,9 @@
 
         <h3 class="title">Edição de obras</h3>
 
-        <form action="/obra/salvar_edicao" method="post">
+        <form>
+
+            <input type="hidden" name="url" url="url" value="salvar_edicao">
 
             <input type="hidden" name="id" id="id" value={{obra.id}}>
 
@@ -25,15 +28,21 @@
             <input type="text" name="endereco" id="endereco" value={{obra.endereco}}><br>
 
             <label for="valorservico">Valor do serviço</label><br>
-            <input type="text" name="valorservico" id="valorservico" value={{obra.valorservico}}><br>
+            <input type="text" name="valorservico" id="valorservico" value={{obra.valorservico}}
+                onkeypress="return somenteNumeros(event)"><br>
 
             <label for="descricao">Descrição</label><br>
             <input type="text" name="descricao" id="descricao" value={{obra.descricao}}>
 
             <br><br><br>
 
-            <button>Salvar</button>
+            <button class="btn-form">Salvar</button>
+            <script src="/functions/formataInput.js"></script>
         </form>
+
+        <div class="box-msg">
+            <p id="msg"></p>
+        </div>
 
     </main>
 

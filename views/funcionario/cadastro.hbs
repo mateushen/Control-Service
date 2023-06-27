@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Serviços</title>
     <link rel="stylesheet" type="text/css" href="/css/estilo.css">
+    <script type="text/javascript" src="/functions/validaFuncionario.js"></script>
 </head>
 
 <body>
@@ -15,20 +16,27 @@
 
     <main>
 
-        <h3 class="title">Cadastro de Funcionário</h3>
+        <h2 class="title">Cadastro de funcionário</h2>
 
-        <form action="/funcionario/inserir" method="post">
+        <form>
+
+            <input type="hidden" name="url" url="url" value="inserir">
 
             <label for="nome">Nome</label><br>
-            <input type="text" name="nome" id="nome"><br>
+            <input type="text" name="nome" id="nome" onkeypress="return somenteLetras(event)"><br>
 
             <label for="valorhora">Valor por hora</label><br>
-            <input type="text" name="valorhora" id="valorhora">
+            <input type="text" name="valorhora" id="valorhora" onkeypress="return somenteNumeros(event)">
 
             <br><br><br>
 
-            <button>Cadastrar</button>
+            <button class="btn-form">Cadastrar</button>
+            <script src="/functions/formataInput.js"></script>
         </form>
+
+        <div class="box-msg">
+            <p id="msg"></p>
+        </div>
 
     </main>
 

@@ -3,11 +3,6 @@ const asyncHandler = require("express-async-handler");
 const Despesa = require("../models/despesa");
 const Obra = require("../models/obra");
 
-exports.despesa_lista = asyncHandler(async (req, res, next) => {
-    await Despesa.sync();
-    res.render('despesa/listagem', { despesa: await Despesa.findAll() });
-});
-
 exports.despesa_cadastrar = asyncHandler(async (req, res, next) => {
     await Obra.sync();
     res.render('despesa/cadastro', { obra: await Obra.findAll() });
@@ -20,12 +15,21 @@ exports.despesa_inserir = asyncHandler(async (req, res, next) => {
         const { descricao, valordespesa, idObra } = req.body;
         if (descricao && valordespesa && idObra) {
             const despesa = await Despesa.create(req.body);
-            res.redirect('/despesa/cadastrar');
+            res.status(200).json({
+                status: 'ok',
+                mensagem: 'Dados cadastrados!'
+            });
         } else {
-            console.log('Erro ao inserir despesa');
+            res.status(500).json({
+                status: 'error',
+                mensagem: 'Erro ao cadastrar!'
+            });
         }
     } catch (error) {
-        console.error('Erro ao inserir despesa:', error);
+        res.status(500).json({
+            status: 'error',
+            mensagem: error
+        });
     }
 });
 
@@ -36,12 +40,21 @@ exports.despesa_funcionario = asyncHandler(async (req, res, next) => {
         const { descricao, valordespesa, idObra } = req.body;
         if (descricao && valordespesa && idObra) {
             const despesa = await Despesa.create(req.body);
-            res.redirect('/despesa/listagem');
+            res.status(200).json({
+                status: 'ok',
+                mensagem: 'Dados cadastrados!'
+            });
         } else {
-            console.log('Erro ao inserir despesa');
+            res.status(500).json({
+                status: 'error',
+                mensagem: 'Erro ao cadastrar!'
+            });
         }
     } catch (error) {
-        console.error('Erro ao inserir despesa:', error);
+        res.status(500).json({
+            status: 'error',
+            mensagem: error
+        });
     }
 });
 
@@ -51,7 +64,7 @@ exports.despesa_deletar = asyncHandler(async (req, res, next) => {
         const despesa = await Despesa.findByPk(id);
         if (despesa) {
             await despesa.destroy({ where: { id } });
-            res.redirect('/despesa/listagem');
+            res.redirect('/obra/listagem');
         } else {
             console.log('Erro ao deletar despesa');
         }
