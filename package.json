@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/mateushen/Control-Service#readme",
   "dependencies": {
-    "bcrypt": "^5.0.1",
+    "bcrypt": "^6.0.0",
     "connect-session-sequelize": "^7.1.7",
     "express": "^4.22.1",
     "express-async-handler": "^1.2.0",
