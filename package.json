@@ -7,6 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon -e js,css,hbs,html,json ./index.js"
   },
+  "overrides": {
+    "handlebars": "^4.7.8"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mateushen/Control-Service.git"
